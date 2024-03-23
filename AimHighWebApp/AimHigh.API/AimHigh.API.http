@@ -1,0 +1,6 @@
+@AimHigh.API_HostAddress = http://localhost:5258
+
+GET {{AimHigh.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
