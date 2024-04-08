@@ -10,6 +10,14 @@ namespace AimHigh.PL.Entities
     {
         public Guid Id { get; set; }
 
-        
+        public string Description {get; set; }
+
+        public virtual ICollection<tblTask> tblTasks { get; set; }
+
+
+
+
+
+
     }
 }

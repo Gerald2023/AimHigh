@@ -3,13 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34511.84
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AimHigh.API", "AimHigh.API\AimHigh.API.csproj", "{9B065E31-D639-471D-AD08-344A808FBDE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AimHigh.API", "AimHigh.API\AimHigh.API.csproj", "{9B065E31-D639-471D-AD08-344A808FBDE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AimHigh.PL", "AimHigh.PL\AimHigh.PL.csproj", "{C577761F-736D-438E-B660-858E8644D5E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AimHigh.PL", "AimHigh.PL\AimHigh.PL.csproj", "{C577761F-736D-438E-B660-858E8644D5E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AimHigh.BL", "AimHigh.BL\AimHigh.BL.csproj", "{DCDFBC20-6168-44B2-9A74-519DB2970242}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AimHigh.BL", "AimHigh.BL\AimHigh.BL.csproj", "{DCDFBC20-6168-44B2-9A74-519DB2970242}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "AimHigh.DB", "AimHigh.DB\AimHigh.DB.sqlproj", "{C8BDDC72-E9B9-4F06-819D-E7FAAF81D851}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CFCFE00E-1887-46D8-99D5-1707A8A8436F}"
+	ProjectSection(SolutionItems) = preProject
+		TextFile1.txt = TextFile1.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

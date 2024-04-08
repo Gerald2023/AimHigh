@@ -21,8 +21,19 @@ namespace AimHigh.PL.Entities
 
         public string Description { get; set; }
 
-        public DateOnly Date { get; set; }
+        public DateTime Date { get; set; }
 
-       
+
+        //virtual fields to establish relationship from Foreing keys to PK
+        public virtual tblUser User { get; set; }
+
+        public virtual tblMilestone Milestone { get; set; }
+
+        public virtual tblTag Tag { get; set; }
+
+
+
+
+
     }
 }

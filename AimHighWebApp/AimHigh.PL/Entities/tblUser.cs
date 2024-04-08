@@ -16,6 +16,12 @@ namespace AimHigh.PL.Entities
         public string Password { get; set; }
         public string Email { get; set; }
 
+        //needed for the db relationship with tblGoal on AimHighEntities : Many
+        public virtual ICollection<tblGoal> tblGoals { get; set; }
+
+        public virtual ICollection<tblTask> tblTasks { get; set; }
+
+
 
     }
 }
