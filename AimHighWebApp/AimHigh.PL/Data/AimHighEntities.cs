@@ -41,25 +41,22 @@ namespace AimHigh.PL.Data
         }
 
         public AimHighEntities()
-        {
-            // Generate GUIDs for taskId and tagId arrays
-            for (int i = 0; i < taskId.Length; i++)
-                taskId[i] = Guid.NewGuid();
+        {          
 
-            for (int i = 0; i < tagId.Length; i++)
-                tagId[i] = Guid.NewGuid();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            
             base.OnModelCreating(modelBuilder);
 
+            //order matters here
             CreateUsers(modelBuilder);
             CreateGoals(modelBuilder);
             CreateMilestones(modelBuilder);
-            CreateTasks(modelBuilder);
             CreateTags(modelBuilder);
+            CreateTasks(modelBuilder);
+         
 
         }
 
@@ -94,7 +91,8 @@ namespace AimHigh.PL.Data
 
         private void CreateTasks(ModelBuilder modelBuilder)
         {
-
+            for (int i = 0; i < taskId.Length; i++)
+                taskId[i] = Guid.NewGuid();
 
             modelBuilder.Entity<tblTask>(entity =>
             {
