@@ -1,2 +1,2 @@
 # AimHigh
-A goal tracker web app
+A goal tracker web app API
