@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+#nullable disable
+
 namespace AimHigh.PL.Entities
 {
     public class tblMilestone:IEntity
@@ -19,7 +21,7 @@ namespace AimHigh.PL.Entities
         public string Status { get; set; }
 
         
-        public ICollection<tblTask>  tblTasks { get; set; }
+        public virtual ICollection<tblTask>  tblTasks { get; set; }
     
     }
 }
