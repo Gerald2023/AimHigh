@@ -17,4 +17,8 @@
     <ProjectReference Include="..\AimHigh.PL\AimHigh.PL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 </Project>

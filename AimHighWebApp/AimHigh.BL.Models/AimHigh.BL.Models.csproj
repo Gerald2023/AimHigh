@@ -6,9 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\AimHigh.BL.Models\AimHigh.BL.Models.csproj" />
-    <ProjectReference Include="..\AimHigh.PL\AimHigh.PL.csproj" />
-  </ItemGroup>
-
 </Project>
