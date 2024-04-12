@@ -132,23 +132,26 @@ namespace AimHigh.BL
         {
             try
             {
-                User user = new User();
+                tblUser row = base.LoadById(id);
 
-                using (AimHighEntities dc = new AimHighEntities())
+               if(row != null)
                 {
-                    user = (from u in dc.tblUsers
-                            where u.Id == id
-                            select new User
-                            {
-                                Id = u.Id,
-                                FirstName = u.FirstName,
-                                LastName = u.LastName,
-                                Email = u.Email,
-                                Password = u.Password
-                            }).FirstOrDefault();
-                }
+                    User user = new User
+                    {
+                        Id = row.Id,
+                        FirstName = row.FirstName,
+                        LastName = row.LastName,
+                        Password = row.Password,
+                        Email = row.Email
 
-                return user;
+                    };
+                    return user;
+
+                }
+               else
+                {
+                    throw new Exception();
+                }
             }
             catch (Exception)
             {
@@ -163,12 +166,12 @@ namespace AimHigh.BL
                 int results = 0;
                 using (AimHighEntities dc = new AimHighEntities(options))
                 {
-                    // Check if username already exists - do not allow ....
+                    // Check if email already exists - do not allow ....
                     bool inuse = dc.tblUsers.Any(u => u.Email.Trim().ToUpper() == user.Email.Trim().ToUpper());
 
                     if (inuse && rollback == false)
                     {
-                        //throw new Exception("This User Name already exists.");
+                        throw new Exception("This Email already exists.");
                     }
                     else
                     {

@@ -11,12 +11,12 @@ namespace AimHigh.BL
     {
         public TagManager(DbContextOptions<AimHighEntities> options) : base(options) { }
 
-        public int Insert(Tag format, bool rollback = false)
+        public int Insert(Tag tag, bool rollback = false)
         {
             try
             {
-                tblTag row = new tblTag { Description = format.Description };
-                format.Id = row.Id;
+                tblTag row = new tblTag { Description = tag.Description };
+                tag.Id = row.Id;
                 return base.Insert(row, rollback);
 
             }
@@ -59,13 +59,13 @@ namespace AimHigh.BL
 
                 if (row != null)
                 {
-                    Tag format = new Tag
+                    Tag tag = new Tag
                     {
                         Id = row.Id,
                         Description = row.Description,
                     };
 
-                    return format;
+                    return tag;
                 }
                 else
                 {
@@ -80,14 +80,14 @@ namespace AimHigh.BL
             }
         }
 
-        public int Update(Tag format, bool rollback = false)
+        public int Update(Tag tag, bool rollback = false)
         {
             try
             {
                 int results = base.Update(new tblTag
                 {
-                    Id = format.Id,
-                    Description = format.Description
+                    Id = tag.Id,
+                    Description = tag.Description
                 }, rollback);
                 return results;
             }
