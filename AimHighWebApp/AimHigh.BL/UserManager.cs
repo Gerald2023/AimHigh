@@ -115,8 +115,9 @@ namespace AimHigh.BL
                         Id = u.Id,
                         FirstName = u.FirstName,
                         LastName = u.LastName,
-                        Email = u.Email,
-                        Password = u.Password
+
+                        Password = u.Password,
+                        Email = u.Email
                     }));
 
                 return users;

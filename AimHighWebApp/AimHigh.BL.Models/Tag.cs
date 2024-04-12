@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace AimHigh.BL.Models
 {
-    internal class Tag
+    public class Tag
     {
+
+        public Guid Id { get; set; }
+
+        public string Description {  get; set; }
+
     }
 }

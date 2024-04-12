@@ -34,7 +34,7 @@ namespace AimHigh.PL.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //put the connection string here to publish locally
-            optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=AimHigh.DB;Integrated Security=True");
+            //optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=AimHigh.DB;Integrated Security=True");
             //optionsBuilder.UseLazyLoadingProxies();
 
 

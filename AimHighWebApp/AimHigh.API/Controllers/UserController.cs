@@ -10,18 +10,18 @@ namespace AimHigh.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : Controller
+    public class UserController : ControllerBase
     {
         private readonly DbContextOptions<AimHighEntities> options;
 
-        // public UserController(ILogger<UserController> logger,
-        /*        
-                DbContextOptions<AimHighEntities> options)
-                {
-                    //this.options = options;
+        public UserController(ILogger<UserController> logger,
+
+        DbContextOptions<AimHighEntities> options)
+        {
+                    this.options = options;
                     //this.logger = logger;
                     //logger.LogWarning("I was here!!!");
-                }*/
+        }
         [HttpGet]
         public IEnumerable<User> Get()
         {
