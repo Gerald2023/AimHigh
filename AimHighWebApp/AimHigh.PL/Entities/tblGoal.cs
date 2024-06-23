@@ -19,8 +19,10 @@ namespace AimHigh.PL.Entities
         public double Progress {  get; set; }
 
 
-        //this is needed for the Context Entity relationship with User
-        public virtual tblUser User { get; set; }
+        
+        public virtual tblUser User { get; set; } //this is needed for the Context Entity relationship with User
+        public virtual ICollection<tblMilestone> tblMilestones { get; set; } // a goal can  have man milestones
+
 
 
     }

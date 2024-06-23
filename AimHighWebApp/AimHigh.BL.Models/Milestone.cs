@@ -6,7 +6,19 @@ using System.Threading.Tasks;
 
 namespace AimHigh.BL.Models
 {
-    internal class Milestone
+    public class Milestone
     {
+        public Guid Id { get; set; }
+
+        public Guid GoalId { get; set; } //FK
+
+        public string Title { get; set; }
+
+        public string Description { get; set; }
+
+        public DateTime Date { get; set; }
+
+        public string Status { get; set; }
+
     }
 }

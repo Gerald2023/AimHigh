@@ -5,3 +5,7 @@
 3. Run the following commands on the package manager console:
 	Add-Migration CreateDatabase
 	Update-Database
+
+
+Notes to myself:
+When creating relationships between table on code first, make sure to create the independent entity first, then the dependent entity. example. Goals first before Milestones
