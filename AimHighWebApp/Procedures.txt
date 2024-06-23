@@ -1,0 +1,7 @@
+//Publishing Database using Code First
+
+1. Set PL as a startup project on from the solution explorer and as default project on package manager console
+2. set connection string on "OnConfigure" on the entities command
+3. Run the following commands on the package manager console:
+	Add-Migration CreateDatabase
+	Update-Database
