@@ -54,7 +54,10 @@ namespace AimHigh.PL.Data
             CreateUsers(modelBuilder);
             CreateGoals(modelBuilder);
             CreateMilestones(modelBuilder);
+            CreateTags(modelBuilder);
             CreateTasks(modelBuilder);
+
+
          
 
         }
@@ -123,7 +126,7 @@ namespace AimHigh.PL.Data
                 entity.HasOne(d => d.User)
                .WithMany(p => p.tblGoals)
                .HasForeignKey(d => d.UserId)
-               .OnDelete(DeleteBehavior.ClientSetNull)
+               .OnDelete(DeleteBehavior.Cascade)
                .HasConstraintName("FK_tblGoal_tblUser");
 
                 //more Fields
@@ -136,7 +139,7 @@ namespace AimHigh.PL.Data
                     .IsRequired()
                     .IsUnicode(false);
                 entity.Property(e => e.ImagePath)
-                    .IsRequired()
+                    .IsRequired(false)
                     .HasMaxLength(50)
                     .IsUnicode(false);
                 entity.Property(e => e.Date)
@@ -191,7 +194,7 @@ namespace AimHigh.PL.Data
                 entity.HasOne(d => d.Goal)
                .WithMany(p => p.tblMilestones)
                .HasForeignKey(d => d.GoalId)
-               .OnDelete(DeleteBehavior.ClientSetNull)
+               .OnDelete(DeleteBehavior.Cascade)
                .HasConstraintName("FK_tblMilestone_tblGoal");
 
                 entity.Property(e => e.Id).ValueGeneratedNever();
@@ -233,6 +236,34 @@ namespace AimHigh.PL.Data
             });
         }
 
+        private void CreateTags(ModelBuilder modelBuilder)
+        {
+            for (int i = 0; i < tagId.Length; i++)
+                tagId[i] = Guid.NewGuid();
+
+            modelBuilder.Entity<tblTag>(entity =>
+            {
+                entity.HasKey(e => e.Id).HasName("PK_tblTag_Id");
+                entity.ToTable("tblTag");
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Description)
+                .IsRequired()
+                .IsUnicode(false);
+            });
+
+            // Sample data
+            modelBuilder.Entity<tblTag>().HasData(new tblTag
+            {
+                Id = tagId[0],
+                Description = "Personal"
+            });
+            modelBuilder.Entity<tblTag>().HasData(new tblTag
+            {
+                Id = tagId[1],
+                Description = "Professional"
+            });
+        }
 
         private void CreateTasks(ModelBuilder modelBuilder)
         {
@@ -247,13 +278,13 @@ namespace AimHigh.PL.Data
                 entity.HasOne(d => d.Milestone)
                       .WithMany(p => p.tblTasks)
                       .HasForeignKey(d => d.MilestoneId)
-                      .OnDelete(DeleteBehavior.ClientSetNull)
+                      .OnDelete(DeleteBehavior.Cascade)
                       .HasConstraintName("FK_tblTask_tblMilestone");
 
                 entity.HasOne(d => d.User)
                       .WithMany(p => p.tblTasks)
                       .HasForeignKey(d => d.UserId)
-                      .OnDelete(DeleteBehavior.ClientSetNull)
+                      .OnDelete(DeleteBehavior.NoAction) // // Changed to NoAction to avoid multiple cascade paths
                       .HasConstraintName("FK_tblTask_tblUser");
 
                 entity.HasOne(d => d.Tag)
@@ -299,34 +330,6 @@ namespace AimHigh.PL.Data
 
         }
 
-        private void CreateTags(ModelBuilder modelBuilder)
-        {
-            for (int i = 0; i < tagId.Length; i++)
-                tagId[i] = Guid.NewGuid();
-
-            modelBuilder.Entity<tblTag>(entity =>
-            {
-                entity.HasKey(e => e.Id).HasName("PK_tblTag_Id");
-                entity.ToTable("tblTag");
-
-                entity.Property(e => e.Id).ValueGeneratedNever();
-                entity.Property(e => e.Description)
-                .IsRequired()
-                .IsUnicode(false);
-            });
-
-            // Sample data
-            modelBuilder.Entity<tblTag>().HasData(new tblTag
-            {
-                Id = tagId[0],
-                Description = "Personal"
-            });
-            modelBuilder.Entity<tblTag>().HasData(new tblTag
-            {
-                Id = tagId[1],
-                Description = "Professional"
-            });
-        }
 
 
 
