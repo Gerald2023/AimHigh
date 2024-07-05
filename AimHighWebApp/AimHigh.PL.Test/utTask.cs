@@ -1,28 +1,29 @@
 namespace AimHigh.PL.Test
 {
     [TestClass]
-    public class utGoal : utBase<tblGoal>
+    public class utTask : utBase<tblTask>
     {
 
         [TestMethod]
         public void LoadTest()
         {
             int expected = 2;
-            var goals = base.LoadTest();
-            Assert.AreEqual(expected, goals.Count());
+            var tasks = base.LoadTest();
+            Assert.AreEqual(expected, tasks.Count());
         }
 
         [TestMethod]
         public void InsertTest()
         {
-            int rowsAffected = base.InsertTest(new tblGoal
+            int rowsAffected = base.InsertTest(new tblTask
             {
                 Id = Guid.NewGuid(),
                 UserId = dc.tblUsers.FirstOrDefault().Id, // This retrieves the Id of an existing user from the tblUsers table
+                MilestoneId = dc.tblMilestones.FirstOrDefault().Id, // This retrieves the Id of an existing milestone from the tblMilestones table
                 Title = "XXXXX",
                 Description = "XXXXX",
                 Date = DateTime.Now,
-                Progress = 0.5
+                TagId = dc.tblTags.FirstOrDefault().Id, // This retrieves the Id of an existing tag from the tblTags table
 
             }); ;
             Assert.AreEqual(1, rowsAffected);
@@ -31,14 +32,19 @@ namespace AimHigh.PL.Test
         [TestMethod]
         public void UpdateTest()
         {
-            tblGoal row = base.LoadTest().FirstOrDefault(x => x.Title == "Other");
+            tblTask row = base.LoadTest().FirstOrDefault(x => x.Description == "Read and complete exercises in Chapter 1 of the textbook.");
 
             if (row != null)
             {
-                row.Description = "Test";
+                row.Description = "YYYY";
                 int rowsAffected = dc.SaveChanges();
 
                 Assert.AreEqual(1, rowsAffected);
+            }
+            else
+            {
+                // Fail the test if no task was found with the description "Other"
+                Assert.Fail($"No task found with description");
             }
         }
 
@@ -47,20 +53,16 @@ namespace AimHigh.PL.Test
         public void DeleteTest()
         {
 
-            tblGoal row = base.LoadTest().FirstOrDefault(x => x.Title == "Learn ASP.NET Core");
+            tblTask row = base.LoadTest().FirstOrDefault(x => x.Description == "Other");
 
             if (row != null)
             {
-                dc.tblGoals.Remove(row);
+                dc.tblTasks.Remove(row);
                 int rowsAffected = dc.SaveChanges();
 
                 Assert.IsTrue(rowsAffected == 1);
             }
 
-            
-
         }
-
-
     }
 }

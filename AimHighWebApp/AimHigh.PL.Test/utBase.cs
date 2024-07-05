@@ -9,6 +9,9 @@ namespace AimHigh.PL.Test
         private IConfigurationRoot _configuration;
         private DbContextOptions<AimHighEntities> options;
 
+
+        // Constructor to initialize the database context and configuration
+
         public utBase()
         {
             var builder = new ConfigurationBuilder()
