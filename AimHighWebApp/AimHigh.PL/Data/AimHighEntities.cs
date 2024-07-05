@@ -287,11 +287,11 @@ namespace AimHigh.PL.Data
                       .OnDelete(DeleteBehavior.NoAction) // // Changed to NoAction to avoid multiple cascade paths
                       .HasConstraintName("FK_tblTask_tblUser");
 
-                entity.HasOne(d => d.Tag)
+/*                entity.HasOne(d => d.Tag)
                       .WithMany()  // Remove the navigation property from the Many side
                       .HasForeignKey(d => d.TagId)
                       .OnDelete(DeleteBehavior.ClientSetNull)
-                      .HasConstraintName("FK_tblTask_tblTag");
+                      .HasConstraintName("FK_tblTask_tblTag");*/
 
                 entity.Property(e => e.Id).ValueGeneratedNever();
                 entity.Property(e => e.Title)
@@ -314,7 +314,8 @@ namespace AimHigh.PL.Data
                 TagId = tagId[0], // Assign valid TagId
                 Title = "Complete Chapter 1",
                 Description = "Read and complete exercises in Chapter 1 of the textbook.",
-                Date = DateTime.Now.AddDays(7)
+                Date = DateTime.Now.AddDays(7),
+                
             });
 
             modelBuilder.Entity<tblTask>().HasData(new tblTask
