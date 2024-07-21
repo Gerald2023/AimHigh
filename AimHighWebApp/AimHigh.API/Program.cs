@@ -49,7 +49,7 @@ public class Program
 
         builder.Services.AddDbContextPool<AimHighEntities>(options =>
         {
-            options.UseSqlServer(builder.Configuration.GetConnectionString("DatabaseConnection"));
+            options.UseSqlServer(builder.Configuration.GetConnectionString("RemoteDbConnection"));
             options.UseLazyLoadingProxies();
         }
             );

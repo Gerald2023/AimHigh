@@ -34,7 +34,7 @@ namespace AimHigh.PL.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //put the connection string here to publish locally
-            optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=AimHigh.DB;Integrated Security=True");
+            optionsBuilder.UseSqlServer("Server=tcp:aimhighserver.database.windows.net,1433;Initial Catalog=AimHighdb;Persist Security Info=False;User ID=CloudSAd86944ec;Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             optionsBuilder.UseLazyLoadingProxies();
 
 

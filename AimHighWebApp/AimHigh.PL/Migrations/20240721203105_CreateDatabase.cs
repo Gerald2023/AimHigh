@@ -124,8 +124,8 @@ namespace AimHigh.PL.Migrations
                 columns: new[] { "Id", "Description" },
                 values: new object[,]
                 {
-                    { new Guid("3d9a3a04-ca07-486b-8817-58871807631d"), "Professional" },
-                    { new Guid("b16b574e-d2c2-4d48-b35a-66442dfa4e39"), "Personal" }
+                    { new Guid("0be5e36f-4361-4655-95cf-19a7f1283daf"), "Professional" },
+                    { new Guid("dee65825-5657-498e-b2fd-41bd0650b811"), "Personal" }
                 });
 
             migrationBuilder.InsertData(
@@ -133,8 +133,8 @@ namespace AimHigh.PL.Migrations
                 columns: new[] { "Id", "Email", "FirstName", "LastName", "Password" },
                 values: new object[,]
                 {
-                    { new Guid("dd730944-9f73-4ca4-b89d-01f88492aa28"), "smarin@sample.com", "Steve", "Marin", "pYfdnNb8sO0FgS4H0MRSwLGOIME=" },
-                    { new Guid("fc28e6a0-dc19-4c32-84d6-f58cc1fca7e2"), "Gerald@sample.com", "Gerald", "Vallejos", "pYfdnNb8sO0FgS4H0MRSwLGOIME=" }
+                    { new Guid("914d5bdd-1c4c-4d74-b78e-9c26e06ff2e9"), "Gerald@sample.com", "Gerald", "Vallejos", "pYfdnNb8sO0FgS4H0MRSwLGOIME=" },
+                    { new Guid("ba7c2575-1ff4-4d91-a9db-40c4e37eac96"), "smarin@sample.com", "Steve", "Marin", "pYfdnNb8sO0FgS4H0MRSwLGOIME=" }
                 });
 
             migrationBuilder.InsertData(
@@ -142,8 +142,8 @@ namespace AimHigh.PL.Migrations
                 columns: new[] { "Id", "Date", "Description", "ImagePath", "Progress", "Title", "UserId" },
                 values: new object[,]
                 {
-                    { new Guid("1e373b84-2a2f-4ff2-93a8-5c32ba4396ec"), new DateTime(2024, 5, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Complete online courses and build projects to learn ASP.NET Core.", "learn_aspnet_core.jpg", 0.0, "Learn ASP.NET Core", new Guid("dd730944-9f73-4ca4-b89d-01f88492aa28") },
-                    { new Guid("a9fd987a-e1a0-4d87-99a7-1174bce1f8f4"), new DateTime(2024, 9, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Read a variety of books across different genres.", "read_books.jpg", 0.0, "Read 20 Books", new Guid("fc28e6a0-dc19-4c32-84d6-f58cc1fca7e2") }
+                    { new Guid("6e28d0c4-d028-478d-b45a-6f032ae1ac64"), new DateTime(2024, 5, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Complete online courses and build projects to learn ASP.NET Core.", "learn_aspnet_core.jpg", 0.0, "Learn ASP.NET Core", new Guid("ba7c2575-1ff4-4d91-a9db-40c4e37eac96") },
+                    { new Guid("ee7a87ad-d2dc-427b-84f1-02b3e12d25b4"), new DateTime(2024, 9, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Read a variety of books across different genres.", "read_books.jpg", 0.0, "Read 20 Books", new Guid("914d5bdd-1c4c-4d74-b78e-9c26e06ff2e9") }
                 });
 
             migrationBuilder.InsertData(
@@ -151,8 +151,8 @@ namespace AimHigh.PL.Migrations
                 columns: new[] { "Id", "Date", "Description", "GoalId", "Status", "Title" },
                 values: new object[,]
                 {
-                    { new Guid("62e8c914-2473-46f6-beb1-a31a87de96e9"), new DateTime(2024, 8, 4, 15, 25, 21, 88, DateTimeKind.Local).AddTicks(992), "Finish the first online course.", new Guid("1e373b84-2a2f-4ff2-93a8-5c32ba4396ec"), "Pending", "Complete Course 1" },
-                    { new Guid("9542f6b8-2a62-4a69-bdd1-52e592661806"), new DateTime(2024, 9, 3, 15, 25, 21, 88, DateTimeKind.Local).AddTicks(1053), "Finish the second online course.", new Guid("a9fd987a-e1a0-4d87-99a7-1174bce1f8f4"), "Pending", "Complete Course 2" }
+                    { new Guid("2b1fd0dd-c5a3-4dff-af65-b18f867ae074"), new DateTime(2024, 8, 20, 15, 31, 4, 531, DateTimeKind.Local).AddTicks(2435), "Finish the first online course.", new Guid("6e28d0c4-d028-478d-b45a-6f032ae1ac64"), "Pending", "Complete Course 1" },
+                    { new Guid("cfe1c5c9-8fb7-45e1-b697-c22e8cdb26b0"), new DateTime(2024, 9, 19, 15, 31, 4, 531, DateTimeKind.Local).AddTicks(2497), "Finish the second online course.", new Guid("ee7a87ad-d2dc-427b-84f1-02b3e12d25b4"), "Pending", "Complete Course 2" }
                 });
 
             migrationBuilder.InsertData(
@@ -160,8 +160,8 @@ namespace AimHigh.PL.Migrations
                 columns: new[] { "Id", "Date", "Description", "MilestoneId", "TagId", "Title", "UserId" },
                 values: new object[,]
                 {
-                    { new Guid("32e7f291-9837-4ad5-ac28-dc932f1dd363"), new DateTime(2024, 7, 12, 15, 25, 21, 88, DateTimeKind.Local).AddTicks(4324), "Read and complete exercises in Chapter 1 of the textbook.", new Guid("62e8c914-2473-46f6-beb1-a31a87de96e9"), new Guid("b16b574e-d2c2-4d48-b35a-66442dfa4e39"), "Complete Chapter 1", new Guid("dd730944-9f73-4ca4-b89d-01f88492aa28") },
-                    { new Guid("91581e18-180d-45c7-814b-6e4c6dd0109a"), new DateTime(2024, 7, 19, 15, 25, 21, 88, DateTimeKind.Local).AddTicks(4367), "Write a review of the latest book read.", new Guid("9542f6b8-2a62-4a69-bdd1-52e592661806"), new Guid("3d9a3a04-ca07-486b-8817-58871807631d"), "Write Book Review", new Guid("fc28e6a0-dc19-4c32-84d6-f58cc1fca7e2") }
+                    { new Guid("59e25a3a-157d-40a6-bed5-8149176337dd"), new DateTime(2024, 8, 4, 15, 31, 4, 531, DateTimeKind.Local).AddTicks(6034), "Write a review of the latest book read.", new Guid("cfe1c5c9-8fb7-45e1-b697-c22e8cdb26b0"), new Guid("0be5e36f-4361-4655-95cf-19a7f1283daf"), "Write Book Review", new Guid("914d5bdd-1c4c-4d74-b78e-9c26e06ff2e9") },
+                    { new Guid("8052fd9c-b3e4-4d04-9ef9-6621eaba5574"), new DateTime(2024, 7, 28, 15, 31, 4, 531, DateTimeKind.Local).AddTicks(5997), "Read and complete exercises in Chapter 1 of the textbook.", new Guid("2b1fd0dd-c5a3-4dff-af65-b18f867ae074"), new Guid("dee65825-5657-498e-b2fd-41bd0650b811"), "Complete Chapter 1", new Guid("ba7c2575-1ff4-4d91-a9db-40c4e37eac96") }
                 });
 
             migrationBuilder.CreateIndex(
