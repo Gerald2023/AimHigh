@@ -24,7 +24,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AimHigh.PL.Test", "AimHigh.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AimHigh.UI", "AimHigh.UI\AimHigh.UI.csproj", "{F3BA1F10-83CD-4A62-B954-6C5BEBC7D15C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AimHigh.API.Test", "AimHigh.API.Test\AimHigh.API.Test.csproj", "{DA7B13D7-0899-4ECA-8444-665DA1D9CC18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AimHigh.API.Test", "AimHigh.API.Test\AimHigh.API.Test.csproj", "{DA7B13D7-0899-4ECA-8444-665DA1D9CC18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AimHighMigrationHandler", "AimHighMigrationHandler\AimHighMigrationHandler.csproj", "{CF71BDCE-0943-4CC0-A60B-5CBDF4EAC6FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -70,6 +72,10 @@ Global
 		{DA7B13D7-0899-4ECA-8444-665DA1D9CC18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA7B13D7-0899-4ECA-8444-665DA1D9CC18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA7B13D7-0899-4ECA-8444-665DA1D9CC18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF71BDCE-0943-4CC0-A60B-5CBDF4EAC6FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF71BDCE-0943-4CC0-A60B-5CBDF4EAC6FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF71BDCE-0943-4CC0-A60B-5CBDF4EAC6FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF71BDCE-0943-4CC0-A60B-5CBDF4EAC6FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
