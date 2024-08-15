@@ -49,7 +49,7 @@ public class Program
 
         builder.Services.AddDbContextPool<AimHighEntities>(options =>
         {
-            options.UseSqlServer(builder.Configuration.GetConnectionString("RemoteDbConnection"));
+            options.UseSqlServer(builder.Configuration.GetConnectionString("MonsterRemoteDb"));
             options.UseLazyLoadingProxies();
         }
             );
@@ -59,10 +59,10 @@ public class Program
         app.UseSwagger();
 
         // Configure the HTTP request pipeline.
-        if (app.Environment.IsDevelopment())
-        {
+        //if (app.Environment.IsDevelopment())
+        ///{
             app.UseSwaggerUI();
-        }
+       // }
 
         app.UseHttpsRedirection();
         app.UseRouting();

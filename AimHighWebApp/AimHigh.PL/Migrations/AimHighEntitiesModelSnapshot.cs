@@ -65,23 +65,23 @@ namespace AimHigh.PL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("f5e664c3-c364-4adf-afef-40f27147d333"),
+                            Id = new Guid("5d9413f5-991c-4bcd-91af-07322207e098"),
                             Date = new DateTime(2024, 5, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Complete online courses and build projects to learn ASP.NET Core.",
                             ImagePath = "learn_aspnet_core.jpg",
                             Progress = 0.0,
                             Title = "Learn ASP.NET Core",
-                            UserId = new Guid("3a56a3b1-5848-4133-a2ef-385fe2ae1afe")
+                            UserId = new Guid("a91f61ca-a16b-45c1-a3ec-67cb720c805f")
                         },
                         new
                         {
-                            Id = new Guid("f9473dd6-87bc-4741-835b-734b8f59e885"),
+                            Id = new Guid("bad0900a-ed96-4bad-880a-cc3cff0e0353"),
                             Date = new DateTime(2024, 9, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Read a variety of books across different genres.",
                             ImagePath = "read_books.jpg",
                             Progress = 0.0,
                             Title = "Read 20 Books",
-                            UserId = new Guid("e7630838-876f-4bce-8cf2-12dfadff3a64")
+                            UserId = new Guid("ef74ae7d-0e13-479f-95a0-cc2e637f184e")
                         });
                 });
 
@@ -123,19 +123,19 @@ namespace AimHigh.PL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("1f86dafa-9f65-4348-ab88-3489d80dc95a"),
-                            Date = new DateTime(2024, 8, 20, 15, 40, 7, 542, DateTimeKind.Local).AddTicks(6778),
+                            Id = new Guid("fe10bc5c-a2ed-40b0-bcfe-1302ef7aef7f"),
+                            Date = new DateTime(2024, 9, 10, 14, 53, 45, 113, DateTimeKind.Local).AddTicks(1021),
                             Description = "Finish the first online course.",
-                            GoalId = new Guid("f5e664c3-c364-4adf-afef-40f27147d333"),
+                            GoalId = new Guid("5d9413f5-991c-4bcd-91af-07322207e098"),
                             Status = "Pending",
                             Title = "Complete Course 1"
                         },
                         new
                         {
-                            Id = new Guid("ff447617-821a-41d0-9e14-ba0f4123b1d0"),
-                            Date = new DateTime(2024, 9, 19, 15, 40, 7, 542, DateTimeKind.Local).AddTicks(6842),
+                            Id = new Guid("b6093973-ce0d-4887-ad13-b8d30aebbcf0"),
+                            Date = new DateTime(2024, 10, 10, 14, 53, 45, 113, DateTimeKind.Local).AddTicks(1095),
                             Description = "Finish the second online course.",
-                            GoalId = new Guid("f9473dd6-87bc-4741-835b-734b8f59e885"),
+                            GoalId = new Guid("bad0900a-ed96-4bad-880a-cc3cff0e0353"),
                             Status = "Pending",
                             Title = "Complete Course 2"
                         });
@@ -159,12 +159,12 @@ namespace AimHigh.PL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("6eee8666-1c77-4739-a7be-08618c6b6413"),
+                            Id = new Guid("9d511083-0905-408b-8a07-dcf886bb82ac"),
                             Description = "Personal"
                         },
                         new
                         {
-                            Id = new Guid("11fde2c8-3590-4cd1-af8e-6b53bee7d2d8"),
+                            Id = new Guid("e78f3eb8-555d-42ca-bf98-838bd97ffb49"),
                             Description = "Professional"
                         });
                 });
@@ -211,23 +211,23 @@ namespace AimHigh.PL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("ea46a0ca-4d73-403a-a01e-3e50860ffb12"),
-                            Date = new DateTime(2024, 7, 28, 15, 40, 7, 543, DateTimeKind.Local).AddTicks(546),
+                            Id = new Guid("4d81a2cf-55d0-4cf7-9f95-0d5a13d591e3"),
+                            Date = new DateTime(2024, 8, 18, 14, 53, 45, 113, DateTimeKind.Local).AddTicks(6792),
                             Description = "Read and complete exercises in Chapter 1 of the textbook.",
-                            MilestoneId = new Guid("1f86dafa-9f65-4348-ab88-3489d80dc95a"),
-                            TagId = new Guid("6eee8666-1c77-4739-a7be-08618c6b6413"),
+                            MilestoneId = new Guid("fe10bc5c-a2ed-40b0-bcfe-1302ef7aef7f"),
+                            TagId = new Guid("9d511083-0905-408b-8a07-dcf886bb82ac"),
                             Title = "Complete Chapter 1",
-                            UserId = new Guid("3a56a3b1-5848-4133-a2ef-385fe2ae1afe")
+                            UserId = new Guid("a91f61ca-a16b-45c1-a3ec-67cb720c805f")
                         },
                         new
                         {
-                            Id = new Guid("0035ecf0-019c-4fad-835a-cd0a0588f69e"),
-                            Date = new DateTime(2024, 8, 4, 15, 40, 7, 543, DateTimeKind.Local).AddTicks(585),
+                            Id = new Guid("dba365d2-4e15-4180-965b-996f4cf6d144"),
+                            Date = new DateTime(2024, 8, 25, 14, 53, 45, 113, DateTimeKind.Local).AddTicks(6928),
                             Description = "Write a review of the latest book read.",
-                            MilestoneId = new Guid("ff447617-821a-41d0-9e14-ba0f4123b1d0"),
-                            TagId = new Guid("11fde2c8-3590-4cd1-af8e-6b53bee7d2d8"),
+                            MilestoneId = new Guid("b6093973-ce0d-4887-ad13-b8d30aebbcf0"),
+                            TagId = new Guid("e78f3eb8-555d-42ca-bf98-838bd97ffb49"),
                             Title = "Write Book Review",
-                            UserId = new Guid("e7630838-876f-4bce-8cf2-12dfadff3a64")
+                            UserId = new Guid("ef74ae7d-0e13-479f-95a0-cc2e637f184e")
                         });
                 });
 
@@ -268,7 +268,7 @@ namespace AimHigh.PL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("3a56a3b1-5848-4133-a2ef-385fe2ae1afe"),
+                            Id = new Guid("a91f61ca-a16b-45c1-a3ec-67cb720c805f"),
                             Email = "smarin@sample.com",
                             FirstName = "Steve",
                             LastName = "Marin",
@@ -276,7 +276,7 @@ namespace AimHigh.PL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e7630838-876f-4bce-8cf2-12dfadff3a64"),
+                            Id = new Guid("ef74ae7d-0e13-479f-95a0-cc2e637f184e"),
                             Email = "Gerald@sample.com",
                             FirstName = "Gerald",
                             LastName = "Vallejos",

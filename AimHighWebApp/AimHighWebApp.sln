@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AimHigh.PL", "AimHigh.PL\Ai
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AimHigh.BL", "AimHigh.BL\AimHigh.BL.csproj", "{DCDFBC20-6168-44B2-9A74-519DB2970242}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "AimHigh.DB", "AimHigh.DB\AimHigh.DB.sqlproj", "{C8BDDC72-E9B9-4F06-819D-E7FAAF81D851}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CFCFE00E-1887-46D8-99D5-1707A8A8436F}"
 	ProjectSection(SolutionItems) = preProject
 		Procedures.txt = Procedures.txt
@@ -44,12 +42,6 @@ Global
 		{DCDFBC20-6168-44B2-9A74-519DB2970242}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCDFBC20-6168-44B2-9A74-519DB2970242}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCDFBC20-6168-44B2-9A74-519DB2970242}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C8BDDC72-E9B9-4F06-819D-E7FAAF81D851}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C8BDDC72-E9B9-4F06-819D-E7FAAF81D851}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C8BDDC72-E9B9-4F06-819D-E7FAAF81D851}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{C8BDDC72-E9B9-4F06-819D-E7FAAF81D851}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C8BDDC72-E9B9-4F06-819D-E7FAAF81D851}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C8BDDC72-E9B9-4F06-819D-E7FAAF81D851}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{96FB9A2A-4707-4B05-B66E-E7C3C1D16024}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{96FB9A2A-4707-4B05-B66E-E7C3C1D16024}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96FB9A2A-4707-4B05-B66E-E7C3C1D16024}.Release|Any CPU.ActiveCfg = Release|Any CPU

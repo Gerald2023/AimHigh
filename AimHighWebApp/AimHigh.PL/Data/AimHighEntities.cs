@@ -34,10 +34,11 @@ namespace AimHigh.PL.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //put the connection string here to publish locally
-            optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=AimHigh.DB;Integrated Security=True");
-           //optionsBuilder.UseSqlServer("Server=tcp:aimhighserver.database.windows.net,1433;Initial Catalog=AimHighdb;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;Authentication=\"Active Directory Default\";");
+            //optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=AimHigh.DB;Integrated Security=True");
 
-            optionsBuilder.UseLazyLoadingProxies();
+/*            optionsBuilder.UseSqlServer("Server=db7118.public.databaseasp.net; Database=db7118; User Id=db7118; Password=At5?@Ee7g3B%; Encrypt=True; TrustServerCertificate=True; MultipleActiveResultSets=True;");
+
+            optionsBuilder.UseLazyLoadingProxies();*/
 
 
         }
