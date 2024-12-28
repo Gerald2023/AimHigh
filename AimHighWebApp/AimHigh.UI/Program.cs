@@ -1,7 +1,19 @@
+using AimHigh.PL.Data;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Web.UI;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddRazorPages()
+    .AddMicrosoftIdentityUI();
+
+// Add DbContext with connection string
+builder.Services.AddDbContext<AimHighEntities>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("LocalDbConnection")));
 
 var app = builder.Build();
 

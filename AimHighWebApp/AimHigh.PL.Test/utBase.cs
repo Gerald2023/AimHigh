@@ -21,7 +21,7 @@ namespace AimHigh.PL.Test
             _configuration = builder.Build();
 
             options = new DbContextOptionsBuilder<AimHighEntities>()
-                .UseSqlServer(_configuration.GetConnectionString("DatabaseConnection"))
+                .UseSqlServer(_configuration.GetConnectionString("DatabaseConnection1"))
                 .UseLazyLoadingProxies()
                 .Options;
 
