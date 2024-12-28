@@ -1,4 +1,6 @@
 using AimHigh.PL.Data;
+using AimHigh.UI.Services.API;
+using FluentAssertions.Common;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Web.UI;
@@ -11,11 +13,14 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages()
     .AddMicrosoftIdentityUI();
 
-// Add DbContext with connection string
-builder.Services.AddDbContext<AimHighEntities>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("LocalDbConnection")));
+builder.Services.AddHttpClient<ApiClient>();
+
+//// Add DbContext with connection string
+//builder.Services.AddDbContext<AimHighEntities>(options =>
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("LocalDbConnection")));
 
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

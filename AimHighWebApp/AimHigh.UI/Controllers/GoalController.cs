@@ -1,5 +1,7 @@
 ﻿using AimHigh.BL;
+using AimHigh.BL.Models;
 using AimHigh.PL.Data;
+using AimHigh.UI.Services.API;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -8,22 +10,31 @@ namespace AimHigh.UI.Controllers
 {
     public class GoalController : Controller
     {
-        private readonly DbContextOptions<AimHighEntities> options;
-        private readonly GoalManager goalManager;
 
-        public GoalController(ILogger<GoalController> logger,
-                        DbContextOptions<AimHighEntities> options)
+        private readonly ApiClient _apiClient;
+        private readonly string _apiObjectName = "goal";
+
+        public GoalController(ApiClient apiClient)
         {
-            this.options = options;
-            this.goalManager = new GoalManager(options);
+            _apiClient = apiClient;
         }
 
-        [AllowAnonymous]
-        public IActionResult Index()
+        // GET: Goal
+        public async Task<IActionResult> Index()
         {
-            ViewBag.Title = "Goals";
-            ViewBag.Info = TempData["info"];
-            return View(goalManager.Load());
+            try
+            {
+                // Use API service to get the list of goals
+                var goals = await _apiClient.GetAllAsync<Goal>(_apiObjectName);
+                return View(goals); // Pass goals to the view
+            }
+            catch (Exception ex)
+            {
+                // Handle API call errors
+                ViewBag.ErrorMessage = "Error fetching data from API: " + ex.Message;
+                return View(new List<Goal>());
+            }
         }
+
     }
 }
