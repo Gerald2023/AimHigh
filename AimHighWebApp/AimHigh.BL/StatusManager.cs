@@ -2,27 +2,23 @@
 using AimHigh.PL.Data;
 using AimHigh.PL.Entities;
 using Microsoft.EntityFrameworkCore;
-using Task = AimHigh.BL.Models.Task;
+
 
 namespace AimHigh.BL
 {
-    public class TaskManager : GenericManager<tblTask>
+    public class StatuskManager : GenericManager<tblStatus>
     {
-        public TaskManager(DbContextOptions<AimHighEntities> options) : base(options) { }
+        public StatuskManager(DbContextOptions<AimHighEntities> options) : base(options) { }
 
-        public int Insert(Task task, bool rollback = false)
+        public int Insert(Status status, bool rollback = false)
         {
             try
             {
-                int result = base.Insert(new tblTask
+                int result = base.Insert(new tblStatus
                 {
-                    Id = task.Id,
-                    MilestoneId = task.MilestoneId,
-                    UserId = task.UserId,
-                    TagId = task.TagId,
-                    Title = task.Title,
-                    Description = task.Description,
-                    Date = task.Date
+                    Id = status.Id,
+                    Title = status.Title,
+                    Order = status.Order
 
                 }, rollback);
 
@@ -36,23 +32,20 @@ namespace AimHigh.BL
             }
         }
 
-        public List<Task> Load()
+        public List<Status> Load()
         {
 
             try
             {
-                List<Task> rows = new List<Task>();
+                List<Status> rows = new List<Status>();
                 base.Load()
                     .ForEach(d => rows.Add(
-                        new Task
+                        new Status
                         {
                             Id = d.Id,
-                            MilestoneId = d.MilestoneId,
-                            UserId = d.UserId,
-                            TagId = d.TagId,
                             Title = d.Title,
-                            Description = d.Description,
-                            Date = d.Date
+                            Order = d.Order
+
                         }));
 
                 return rows;
@@ -65,26 +58,22 @@ namespace AimHigh.BL
 
         }
 
-        public Task LoadById(Guid id)
+        public Status LoadById(Guid id)
         {
             try
             {
-                tblTask row = base.LoadById(id);
+                tblStatus row = base.LoadById(id);
 
                 if (row != null)
                 {
-                    Task task = new Task
+                    Status status = new Status
                     {
                         Id = row.Id,
-                        MilestoneId = row.MilestoneId,
-                        UserId = row.UserId,
-                        TagId = row.TagId,
                         Title = row.Title,
-                        Description = row.Description,
-                        Date = row.Date
+                        Order = row.Order
                     };
 
-                    return task;
+                    return status;
                 }
                 else
                 {
@@ -99,14 +88,16 @@ namespace AimHigh.BL
             }
         }
 
-        public int Update(Task task, bool rollback = false)
+        public int Update(Status status, bool rollback = false)
         {
             try
             {
-                int results = base.Update(new tblTask
+                int results = base.Update(new tblStatus
                 {
-                    Id = task.Id,
-                    Title = task.Title,
+                    Id = status.Id,
+                    Title = status.Title,
+                    Order = status.Order
+
 
                 }, rollback);
                 return results;

@@ -18,6 +18,8 @@ namespace AimHigh.PL.Entities
 
         public Guid TagId { get; set; }
 
+        public Guid StatusId { get; set; }
+
         public string Title { get; set; }
 
         public string Description { get; set; }
@@ -31,6 +33,10 @@ namespace AimHigh.PL.Entities
         public virtual tblMilestone Milestone { get; set; }
 
         public virtual tblTag Tag { get; set; }
+
+        public virtual tblStatus Status { get; set; }
+
+
 
 
 
