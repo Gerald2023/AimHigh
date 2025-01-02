@@ -6,9 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AimHigh.BL
 {
-    public class StatuskManager : GenericManager<tblStatus>
+    public class StatusManager : GenericManager<tblStatus>
     {
-        public StatuskManager(DbContextOptions<AimHighEntities> options) : base(options) { }
+        public StatusManager(DbContextOptions<AimHighEntities> options) : base(options) { }
 
         public int Insert(Status status, bool rollback = false)
         {

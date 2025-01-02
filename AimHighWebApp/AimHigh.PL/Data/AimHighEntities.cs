@@ -13,8 +13,10 @@ namespace AimHigh.PL.Data
         Guid[] userId = new Guid[2];
         Guid[] goalId = new Guid[2];
         Guid[] milestoneId = new Guid[2];
+        Guid[] statusId = new Guid[3];
         Guid[] taskId = new Guid[2];
         Guid[] tagId = new Guid[2];
+
 
         public virtual DbSet<tblUser> tblUsers { get; set; }
 
@@ -26,6 +28,9 @@ namespace AimHigh.PL.Data
 
         public virtual DbSet<tblTag> tblTags { get; set; }
 
+        public virtual DbSet<tblStatus> tblStatuses { get; set; }
+
+
         public AimHighEntities(DbContextOptions<AimHighEntities> options) : base(options)
         {
 
@@ -34,7 +39,7 @@ namespace AimHigh.PL.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //put the connection string here to publish locally
-           // optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=AimHigh.DB;Integrated Security=True");
+           optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=AimHigh.DB;Integrated Security=True");
 
             /*            optionsBuilder.UseSqlServer("Server=db7118.public.databaseasp.net; Database=db7118; User Id=db7118; Password=At5?@Ee7g3B%; Encrypt=True; TrustServerCertificate=True; MultipleActiveResultSets=True;");
 */
@@ -58,6 +63,7 @@ namespace AimHigh.PL.Data
             CreateGoals(modelBuilder);
             CreateMilestones(modelBuilder);
             CreateTags(modelBuilder);
+            CreateStatuses(modelBuilder);
             CreateTasks(modelBuilder);
 
 
@@ -268,6 +274,52 @@ namespace AimHigh.PL.Data
             });
         }
 
+        private void CreateStatuses(ModelBuilder modelBuilder)
+        {
+            for(int i =0; i< statusId.Length; i++)
+            {
+                statusId[i] = Guid.NewGuid();
+            }
+
+            modelBuilder.Entity<tblStatus>(entity =>
+            {
+                entity.HasKey(e => e.Id).HasName("PK_tblStatus_Id");
+                entity.ToTable("tblStatus");
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+
+                entity.Property(e => e.Title)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+                entity.Property(e => e.Order)
+                    .IsRequired()
+                    .HasColumnType("int");
+            });
+
+
+            // Sample data
+            modelBuilder.Entity<tblStatus>().HasData(new tblStatus
+            {
+                Id =  statusId[0],
+                Title = "To Do",
+                Order = 1
+            });
+            modelBuilder.Entity<tblStatus>().HasData(new tblStatus
+            {
+                Id = statusId[1],
+                Title = "Doing",
+                Order = 2
+            });
+
+            modelBuilder.Entity<tblStatus>().HasData(new tblStatus
+            {
+                Id = statusId[2],
+                Title = "Done",
+                Order = 3
+            });
+        }
+
         private void CreateTasks(ModelBuilder modelBuilder)
         {
             for (int i = 0; i < taskId.Length; i++)
@@ -277,6 +329,16 @@ namespace AimHigh.PL.Data
             {
                 entity.HasKey(e => e.Id).HasName("PK_tblTask_Id");
                 entity.ToTable("tblTask");
+
+                //foreign keys
+
+                entity.HasOne(d => d.Status)
+                        .WithMany(p => p.tblTasks)
+                        .HasForeignKey(d => d.StatusId)
+                        .OnDelete(DeleteBehavior.NoAction) // Changed to NoAction to avoid multiple cascade paths
+                        .HasConstraintName("FK_tblTask_tblStatus");
+
+
 
                 entity.HasOne(d => d.Milestone)
                       .WithMany(p => p.tblTasks)
@@ -290,11 +352,6 @@ namespace AimHigh.PL.Data
                       .OnDelete(DeleteBehavior.NoAction) // // Changed to NoAction to avoid multiple cascade paths
                       .HasConstraintName("FK_tblTask_tblUser");
 
-/*                entity.HasOne(d => d.Tag)
-                      .WithMany()  // Remove the navigation property from the Many side
-                      .HasForeignKey(d => d.TagId)
-                      .OnDelete(DeleteBehavior.ClientSetNull)
-                      .HasConstraintName("FK_tblTask_tblTag");*/
 
                 entity.Property(e => e.Id).ValueGeneratedNever();
                 entity.Property(e => e.Title)
@@ -313,6 +370,7 @@ namespace AimHigh.PL.Data
             {
                 Id = taskId[0], // Use the pre-generated task Id
                 MilestoneId = milestoneId[0], // Assign valid MilestoneId
+                StatusId = statusId[0], // Assign valid StatusId
                 UserId = userId[0], // Assign valid UserId
                 TagId = tagId[0], // Assign valid TagId
                 Title = "Complete Chapter 1",
@@ -326,6 +384,7 @@ namespace AimHigh.PL.Data
                 Id = taskId[1], // Use the pre-generated task Id
                 MilestoneId = milestoneId[1], // Assign valid MilestoneId
                 UserId = userId[1], // Assign valid UserId
+                StatusId = statusId[1], // Assign valid StatusId
                 TagId = tagId[1], // Assign valid TagId
                 Title = "Write Book Review",
                 Description = "Write a review of the latest book read.",

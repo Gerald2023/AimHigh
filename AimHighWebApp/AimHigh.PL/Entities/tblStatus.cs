@@ -12,5 +12,8 @@ namespace AimHigh.PL.Entities
 
         public int Order { get; set; }
 
+        public virtual ICollection<tblTask> tblTasks { get; set; }
+
+
     }
 }
