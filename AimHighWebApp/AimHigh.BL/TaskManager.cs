@@ -17,6 +17,7 @@ namespace AimHigh.BL
                 int result = base.Insert(new tblTask
                 {
                     Id = task.Id,
+                    StatusId = task.StatusId,
                     MilestoneId = task.MilestoneId,
                     UserId = task.UserId,
                     TagId = task.TagId,
@@ -52,7 +53,8 @@ namespace AimHigh.BL
                             TagId = d.TagId,
                             Title = d.Title,
                             Description = d.Description,
-                            Date = d.Date
+                            Date = d.Date,
+                            StatusId = d.StatusId
                         }));
 
                 return rows;
@@ -78,6 +80,7 @@ namespace AimHigh.BL
                         Id = row.Id,
                         MilestoneId = row.MilestoneId,
                         UserId = row.UserId,
+                        StatusId = row.StatusId,
                         TagId = row.TagId,
                         Title = row.Title,
                         Description = row.Description,
@@ -107,6 +110,13 @@ namespace AimHigh.BL
                 {
                     Id = task.Id,
                     Title = task.Title,
+                    Description = task.Description,
+                    Date = task.Date,
+                    MilestoneId = task.MilestoneId,
+                    UserId = task.UserId,
+                    TagId = task.TagId,
+                    StatusId = task.StatusId
+
 
                 }, rollback);
                 return results;
@@ -129,5 +139,41 @@ namespace AimHigh.BL
                 throw;
             }
         }
+
+        public List<Task>LoadByStatus(Guid? statusId = null)
+        {
+            try
+            {
+                List<Task> tasks = new List<Task>();
+
+                using(AimHighEntities dc = new AimHighEntities(options))
+                {
+                    tasks = (from t in dc.tblTasks
+                             join s in dc.tblStatuses on t.StatusId equals s.Id
+                             where statusId == null || t.StatusId == statusId
+                             select new Task
+                             {
+                                 Id = t.Id,
+                                 Title = t.Title,
+                                 Description = t.Description,
+                                 Date = t.Date,
+                                 StatusId = t.StatusId,
+                                 statusTitle = t.Status.Title
+                             })
+                             .Distinct().
+                             OrderBy(t => t.Date).
+                             ToList();
+                }
+
+                return tasks;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
     }
 }

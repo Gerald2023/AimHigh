@@ -78,5 +78,13 @@ namespace AimHigh.API.Controllers
             }
         }
 
+        [HttpGet("status/{statusId}")]
+        public IEnumerable<Task> GetByStatus(Guid statusId)
+        {
+            return new TaskManager(options).LoadByStatus(statusId);
+        }
+
+
+
     }
 }

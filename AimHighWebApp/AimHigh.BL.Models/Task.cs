@@ -8,11 +8,14 @@ namespace AimHigh.BL.Models
 {
     public class Task
     {
+        public string statusTitle;
+
         public Guid Id { get; set; }
 
 
         public Guid MilestoneId { get; set; } //FK
         public Guid UserId { get; set; } //FK
+        public Guid StatusId { get; set; } //FK
         public Guid TagId { get; set; } //Fk
         public string Title { get; set; }   
         public string Description { get; set; }
