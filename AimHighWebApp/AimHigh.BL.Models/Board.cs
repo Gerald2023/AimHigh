@@ -6,17 +6,15 @@ using System.Threading.Tasks;
 
 namespace AimHigh.BL.Models
 {
-    public class Goal : BaseEntity
+    public class Board: BaseEntity
     {
         public Guid ProjectId { get; set; }
-        public string Title { get; set; }
+        public string Name { get; set; }
         public string Description { get; set; }
-        public DateTime DueDate { get; set; }
-        public float Progress { get; set; }
 
         // Navigation properties
         public virtual Project Project { get; set; }
-        public virtual ICollection<Milestone> Milestones { get; set; }
+        public virtual ICollection<Column> Columns { get; set; }
+
     }
 }
-

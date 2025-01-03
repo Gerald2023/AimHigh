@@ -1,23 +1,19 @@
 ﻿#nullable disable
 
+using System.Data.Common;
+
 namespace AimHigh.PL.Entities
 {
-    public class tblUser:IEntity
+    public class tblUser : IEntity
     {
         public Guid Id { get; set; }
         public string FirstName { get; set; }
-
         public string LastName { get; set; }
-
-        public string Password { get; set; }
         public string Email { get; set; }
+        public string Password { get; set; }
 
-        //needed for the db relationship with tblGoal on AimHighEntities : Many
-        public virtual ICollection<tblGoal> tblGoals { get; set; }
-
-        public virtual ICollection<tblTask> tblTasks { get; set; }
-
-
-
+        // Navigation properties
+        public virtual ICollection<tblProject> Projects { get; set; }
+        public virtual ICollection<tblTask> Tasks { get; set; }
     }
 }

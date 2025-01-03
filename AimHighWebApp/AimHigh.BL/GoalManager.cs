@@ -9,27 +9,25 @@ namespace AimHigh.BL
     {
         public GoalManager(DbContextOptions<AimHighEntities> options) : base(options) { }
 
-        public int Insert(Goal goal, bool rollback = false)
+        public Guid Insert(Goal goal, bool rollback = false)
         {
             try
             {
-                int result = base.Insert(new tblGoal
+                base.Insert(new tblGoal
                 {
                     Id = goal.Id,
                     UserId = goal.UserId,
                     Description = goal.Description,
                     ImagePath = goal.ImagePath,
                     Date = goal.Date,
-                    Progress = goal.Progress
-
+                    Progress = goal.Progress,
+                    Title = goal.Title
                 }, rollback);
 
-                return result;
-
+                return goal.Id;
             }
             catch (Exception)
             {
-
                 throw;
             }
         }

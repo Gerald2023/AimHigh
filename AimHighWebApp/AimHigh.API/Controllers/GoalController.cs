@@ -39,7 +39,7 @@ namespace AimHigh.API.Controllers
         }
 
         [HttpPost("{rollback?}")]
-        public int Post([FromBody] Goal goal, bool rollback = false)
+        public Guid Post([FromBody] Goal goal, bool rollback = false)
         {
             try
             {

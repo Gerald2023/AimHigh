@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 
 namespace AimHigh.BL.Models
 {
-    public class Tag : BaseEntity
+    public class Column : BaseEntity
     {
+        public Guid BoardId { get; set; }
         public string Name { get; set; }
-        public string Color { get; set; }
+        public int Order { get; set; }
+        public int? WIPLimit { get; set; }  // Work In Progress limit
 
         // Navigation properties
+        public virtual Board Board { get; set; }
         public virtual ICollection<Task> Tasks { get; set; }
     }
 }

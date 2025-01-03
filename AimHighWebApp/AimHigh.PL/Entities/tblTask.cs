@@ -8,41 +8,26 @@ using System.Threading.Tasks;
 
 namespace AimHigh.PL.Entities
 {
-    public class tblTask:IEntity
+    public class tblTask : IEntity
     {
         public Guid Id { get; set; }
-
-        public Guid MilestoneId { get; set; }
-
-        public Guid UserId { get; set; }
-
-        public Guid TagId { get; set; }
-
-        public Guid StatusId { get; set; }
-
+        public Guid ColumnId { get; set; }
+        public Guid? MilestoneId { get; set; }
+        public Guid? AssigneeId { get; set; }
+        public Guid? TagId { get; set; }
         public string Title { get; set; }
-
         public string Description { get; set; }
+        public DateTime DueDate { get; set; }
+        public int Order { get; set; }
+        public string Priority { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime? ModifiedAt { get; set; }
 
-        public DateTime Date { get; set; }
-
-
-        //virtual fields to establish relationship from Foreing keys to PK
-        public virtual tblUser User { get; set; }
-
+        // Navigation properties
+        public virtual tblColumn Column { get; set; }
         public virtual tblMilestone Milestone { get; set; }
-
+        public virtual tblUser Assignee { get; set; }
         public virtual tblTag Tag { get; set; }
-
-        public virtual tblStatus Status { get; set; }
-
-
-
-
-
-
-
-
-
     }
+
 }

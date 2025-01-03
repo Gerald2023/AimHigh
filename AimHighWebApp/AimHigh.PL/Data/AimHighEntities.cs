@@ -10,25 +10,22 @@ namespace AimHigh.PL.Data
 {
     public class AimHighEntities: DbContext
     {
-        Guid[] userId = new Guid[2];
+/*        Guid[] userId = new Guid[2];
         Guid[] goalId = new Guid[2];
         Guid[] milestoneId = new Guid[2];
         Guid[] statusId = new Guid[3];
         Guid[] taskId = new Guid[2];
-        Guid[] tagId = new Guid[2];
+        Guid[] tagId = new Guid[2];*/
 
 
         public virtual DbSet<tblUser> tblUsers { get; set; }
-
+        public virtual DbSet<tblProject> tblProjects { get; set; }
+        public virtual DbSet<tblBoard> tblBoards { get; set; }
+        public virtual DbSet<tblColumn> tblColumns { get; set; }
         public virtual DbSet<tblGoal> tblGoals { get; set; }
-
         public virtual DbSet<tblMilestone> tblMilestones { get; set; }
-
         public virtual DbSet<tblTask> tblTasks { get; set; }
-
         public virtual DbSet<tblTag> tblTags { get; set; }
-
-        public virtual DbSet<tblStatus> tblStatuses { get; set; }
 
 
         public AimHighEntities(DbContextOptions<AimHighEntities> options) : base(options)
@@ -41,8 +38,6 @@ namespace AimHigh.PL.Data
             //put the connection string here to publish locally
            optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=AimHigh.DB;Integrated Security=True");
 
-            /*            optionsBuilder.UseSqlServer("Server=db7118.public.databaseasp.net; Database=db7118; User Id=db7118; Password=At5?@Ee7g3B%; Encrypt=True; TrustServerCertificate=True; MultipleActiveResultSets=True;");
-*/
                         optionsBuilder.UseLazyLoadingProxies();
 
 
@@ -58,27 +53,28 @@ namespace AimHigh.PL.Data
             
             base.OnModelCreating(modelBuilder);
 
-            //order matters here
-            CreateUsers(modelBuilder);
-            CreateGoals(modelBuilder);
-            CreateMilestones(modelBuilder);
-            CreateTags(modelBuilder);
-            CreateStatuses(modelBuilder);
-            CreateTasks(modelBuilder);
+            // Order matters for seeding data
+            ConfigureUser(modelBuilder);
+            ConfigureProject(modelBuilder);
+            ConfigureBoard(modelBuilder);
+            ConfigureColumn(modelBuilder);
+            ConfigureGoal(modelBuilder);
+            ConfigureMilestone(modelBuilder);
+            ConfigureTag(modelBuilder);
+            ConfigureTask(modelBuilder);
+
+            SeedData(modelBuilder);
 
 
-         
+
+
 
         }
 
-        private void CreateUsers(ModelBuilder modelBuilder)
+        private void ConfigureUser(ModelBuilder modelBuilder)
         {
-            for (int i = 0; i < userId.Length; i++)
-                userId[i] = Guid.NewGuid();
-
             modelBuilder.Entity<tblUser>(entity =>
             {
-
                 entity.HasKey(e => e.Id).HasName("PK_tblUser_Id");
                 entity.ToTable("tblUser");
 
@@ -91,318 +87,391 @@ namespace AimHigh.PL.Data
                     .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
-                entity.Property(e => e.Password)
-                    .IsRequired()
-                    .HasMaxLength(28)
-                    .IsUnicode(false);
                 entity.Property(e => e.Email)
                     .IsRequired()
-                    .HasMaxLength(50)
+                    .HasMaxLength(100)
                     .IsUnicode(false);
-            });
+                entity.Property(e => e.Password)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
 
-            modelBuilder.Entity<tblUser>().HasData(new tblUser
-            {
-                Id = userId[0],
-                FirstName = "Steve",
-                LastName = "Marin",
-                Password = GetHash("maple"),
-                Email = "smarin@sample.com"
+                // Add unique index for email
+                entity.HasIndex(e => e.Email).IsUnique();
             });
-            modelBuilder.Entity<tblUser>().HasData(new tblUser
-            {
-                Id = userId[1],
-                FirstName = "Gerald",
-                LastName = "Vallejos",
-                Password = GetHash("maple"),
-                Email = "Gerald@sample.com"
-            });
-
         }
 
-        private void CreateGoals(ModelBuilder modelBuilder)
+        private void ConfigureProject(ModelBuilder modelBuilder)
         {
-            for (int i = 0; i < goalId.Length; i++)
-                goalId[i] = Guid.NewGuid();
-
-            modelBuilder.Entity<tblGoal>(entity =>
+            modelBuilder.Entity<tblProject>(entity =>
             {
-                //Primary Key
-                entity.HasKey(e => e.Id).HasName("PK_tblGoal_Id");
-                entity.ToTable("tblGoal");
+                entity.HasKey(e => e.Id).HasName("PK_tblProject_Id");
+                entity.ToTable("tblProject");
 
-                //foreign key with tblUser
-                entity.HasOne(d => d.User)
-               .WithMany(p => p.tblGoals)
-               .HasForeignKey(d => d.UserId)
-               .OnDelete(DeleteBehavior.Cascade)
-               .HasConstraintName("FK_tblGoal_tblUser");
-
-                //more Fields
                 entity.Property(e => e.Id).ValueGeneratedNever();
-                entity.Property(e => e.Title)
-                     .IsRequired()
-                     .HasMaxLength(100)
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(100)
                     .IsUnicode(false);
                 entity.Property(e => e.Description)
                     .IsRequired()
                     .IsUnicode(false);
-                entity.Property(e => e.ImagePath)
-                    .IsRequired(false)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-                entity.Property(e => e.Date)
-                .HasColumnType("datetime");
-                entity.Property(e => e.Progress)
-                    .IsRequired()
-                    .HasColumnType("float");
 
+                // Relationship with User
+                entity.HasOne(d => d.Owner)
+                          .WithMany(p => p.Projects)
+                          .HasForeignKey(d => d.OwnerId)
+                          .OnDelete(DeleteBehavior.Restrict)
+                          .HasConstraintName("FK_tblProject_tblUser");
 
-
+                entity.HasIndex(e => e.OwnerId);
             });
-
-            //placing sample data
-
-            modelBuilder.Entity<tblGoal>().HasData(new tblGoal
-            {
-                Id = goalId[0],
-                UserId = userId[0], // 
-                Title = "Learn ASP.NET Core",
-                Description = "Complete online courses and build projects to learn ASP.NET Core.",
-                ImagePath = "learn_aspnet_core.jpg",
-                Date = new DateTime(2024, 5, 5),
-                Progress = 0.0
-            });
-
-            modelBuilder.Entity<tblGoal>().HasData(new tblGoal
-            {
-                Id = goalId[1],
-                UserId = userId[1],
-                Title = "Read 20 Books",
-                Description = "Read a variety of books across different genres.",
-                ImagePath = "read_books.jpg",
-                Date = new DateTime(2024, 9, 5),
-                Progress = 0.0
-            });
-
-
-
         }
 
-        private void CreateMilestones(ModelBuilder modelBuilder)
+        private void ConfigureBoard(ModelBuilder modelBuilder)
         {
-            for (int i = 0; i < milestoneId.Length; i++)
-                milestoneId[i] = Guid.NewGuid();
+            modelBuilder.Entity<tblBoard>(entity =>
+            {
+                entity.HasKey(e => e.Id).HasName("PK_tblBoard_Id");
+                entity.ToTable("tblBoard");
 
+                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+                entity.Property(e => e.Description)
+                    .IsRequired()
+                    .IsUnicode(false);
+
+                // Relationship with Project
+                entity.HasOne(d => d.Project)
+                    .WithMany(p => p.tblBoards)
+                    .HasForeignKey(d => d.ProjectId)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_tblBoard_tblProject");
+            });
+        }
+
+        private void ConfigureColumn(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<tblColumn>(entity =>
+            {
+                entity.HasKey(e => e.Id).HasName("PK_tblColumn_Id");
+                entity.ToTable("tblColumn");
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                // Relationship with Board
+                entity.HasOne(d => d.Board)
+                    .WithMany(p => p.tblColumns)
+                    .HasForeignKey(d => d.BoardId)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_tblColumn_tblBoard");
+
+                // Add index on Order for sorting
+                entity.HasIndex(e => new { e.BoardId, e.Order });
+            });
+        }
+
+        private void ConfigureGoal(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<tblGoal>(entity =>
+            {
+                entity.HasKey(e => e.Id).HasName("PK_tblGoal_Id");
+                entity.ToTable("tblGoal");
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Title)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+                entity.Property(e => e.Description)
+                    .IsRequired()
+                    .IsUnicode(false);
+                entity.Property(e => e.Progress)
+                    .HasColumnType("float");
+                entity.Property(e => e.DueDate)
+                    .HasColumnType("datetime");
+
+                // Relationship with Project
+                entity.HasOne(d => d.Project)
+                    .WithMany(p => p.tblGoals)
+                    .HasForeignKey(d => d.ProjectId)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_tblGoal_tblProject");
+
+                // Add index on ProjectId and DueDate
+                entity.HasIndex(e => new { e.ProjectId, e.DueDate });
+            });
+        }
+
+        private void ConfigureMilestone(ModelBuilder modelBuilder)
+        {
             modelBuilder.Entity<tblMilestone>(entity =>
             {
                 entity.HasKey(e => e.Id).HasName("PK_tblMilestone_Id");
                 entity.ToTable("tblMilestone");
 
-                //foreign key with Goal
-                entity.HasOne(d => d.Goal)
-               .WithMany(p => p.tblMilestones)
-               .HasForeignKey(d => d.GoalId)
-               .OnDelete(DeleteBehavior.Cascade)
-               .HasConstraintName("FK_tblMilestone_tblGoal");
-
                 entity.Property(e => e.Id).ValueGeneratedNever();
                 entity.Property(e => e.Title)
-                     .IsRequired()
-                     .HasMaxLength(100)
-                     .IsUnicode(false);
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
                 entity.Property(e => e.Description)
                     .IsRequired()
                     .IsUnicode(false);
-                entity.Property(e => e.Date)
-                .HasColumnType("datetime");
                 entity.Property(e => e.Status)
                     .IsRequired()
-                    .HasMaxLength(50)
+                    .HasMaxLength(20)
                     .IsUnicode(false);
+                entity.Property(e => e.DueDate)
+                    .HasColumnType("datetime");
 
-            });
+                // Relationship with Goal
+                entity.HasOne(d => d.Goal)
+                    .WithMany(p => p.tblMilestones)
+                    .HasForeignKey(d => d.GoalId)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("FK_tblMilestone_tblGoal");
 
-            // Adding sample data
-            modelBuilder.Entity<tblMilestone>().HasData(new tblMilestone
-            {
-                Id = milestoneId[0],
-                GoalId = goalId[0], 
-                Title = "Complete Course 1",
-                Description = "Finish the first online course.",
-                Date = DateTime.Now.AddDays(30), // Set a future date for the milestone
-                Status = "Pending"
-            });
-
-            modelBuilder.Entity<tblMilestone>().HasData(new tblMilestone
-            {
-                Id = milestoneId[1],
-                GoalId = goalId[1],
-                Title = "Complete Course 2",
-                Description = "Finish the second online course.",
-                Date = DateTime.Now.AddDays(60), // Set a future date for the milestone
-                Status = "Pending"
+                // Add index on GoalId and DueDate
+                entity.HasIndex(e => new { e.GoalId, e.DueDate });
             });
         }
 
-        private void CreateTags(ModelBuilder modelBuilder)
+        private void ConfigureTag(ModelBuilder modelBuilder)
         {
-            for (int i = 0; i < tagId.Length; i++)
-                tagId[i] = Guid.NewGuid();
-
             modelBuilder.Entity<tblTag>(entity =>
             {
                 entity.HasKey(e => e.Id).HasName("PK_tblTag_Id");
                 entity.ToTable("tblTag");
 
                 entity.Property(e => e.Id).ValueGeneratedNever();
-                entity.Property(e => e.Description)
-                .IsRequired()
-                .IsUnicode(false);
-            });
-
-            // Sample data
-            modelBuilder.Entity<tblTag>().HasData(new tblTag
-            {
-                Id = tagId[0],
-                Description = "Personal"
-            });
-            modelBuilder.Entity<tblTag>().HasData(new tblTag
-            {
-                Id = tagId[1],
-                Description = "Professional"
-            });
-        }
-
-        private void CreateStatuses(ModelBuilder modelBuilder)
-        {
-            for(int i =0; i< statusId.Length; i++)
-            {
-                statusId[i] = Guid.NewGuid();
-            }
-
-            modelBuilder.Entity<tblStatus>(entity =>
-            {
-                entity.HasKey(e => e.Id).HasName("PK_tblStatus_Id");
-                entity.ToTable("tblStatus");
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
-
-                entity.Property(e => e.Title)
+                entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
-                entity.Property(e => e.Order)
+                entity.Property(e => e.Color)
                     .IsRequired()
-                    .HasColumnType("int");
-            });
-
-
-            // Sample data
-            modelBuilder.Entity<tblStatus>().HasData(new tblStatus
-            {
-                Id =  statusId[0],
-                Title = "To Do",
-                Order = 1
-            });
-            modelBuilder.Entity<tblStatus>().HasData(new tblStatus
-            {
-                Id = statusId[1],
-                Title = "Doing",
-                Order = 2
-            });
-
-            modelBuilder.Entity<tblStatus>().HasData(new tblStatus
-            {
-                Id = statusId[2],
-                Title = "Done",
-                Order = 3
+                    .HasMaxLength(7)  // For hex color codes (#FFFFFF)
+                    .IsUnicode(false);
             });
         }
 
-        private void CreateTasks(ModelBuilder modelBuilder)
+        private void ConfigureTask(ModelBuilder modelBuilder)
         {
-            for (int i = 0; i < taskId.Length; i++)
-                taskId[i] = Guid.NewGuid();
-
             modelBuilder.Entity<tblTask>(entity =>
             {
                 entity.HasKey(e => e.Id).HasName("PK_tblTask_Id");
                 entity.ToTable("tblTask");
 
-                //foreign keys
-
-                entity.HasOne(d => d.Status)
-                        .WithMany(p => p.tblTasks)
-                        .HasForeignKey(d => d.StatusId)
-                        .OnDelete(DeleteBehavior.NoAction) // Changed to NoAction to avoid multiple cascade paths
-                        .HasConstraintName("FK_tblTask_tblStatus");
-
-
-
-                entity.HasOne(d => d.Milestone)
-                      .WithMany(p => p.tblTasks)
-                      .HasForeignKey(d => d.MilestoneId)
-                      .OnDelete(DeleteBehavior.Cascade)
-                      .HasConstraintName("FK_tblTask_tblMilestone");
-
-                entity.HasOne(d => d.User)
-                      .WithMany(p => p.tblTasks)
-                      .HasForeignKey(d => d.UserId)
-                      .OnDelete(DeleteBehavior.NoAction) // // Changed to NoAction to avoid multiple cascade paths
-                      .HasConstraintName("FK_tblTask_tblUser");
-
-
                 entity.Property(e => e.Id).ValueGeneratedNever();
                 entity.Property(e => e.Title)
-                     .IsRequired()
-                     .HasMaxLength(100)
-                     .IsUnicode(false);
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
                 entity.Property(e => e.Description)
                     .IsRequired()
                     .IsUnicode(false);
-                entity.Property(e => e.Date)
-                .HasColumnType("datetime");
-            });
+                entity.Property(e => e.Priority)
+                    .IsRequired()
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+                entity.Property(e => e.DueDate)
+                    .HasColumnType("datetime");
 
-            // Adding sample data
-            modelBuilder.Entity<tblTask>().HasData(new tblTask
+                // Relationships
+                entity.HasOne(d => d.Column)
+                    .WithMany(p => p.tblTasks)
+                    .HasForeignKey(d => d.ColumnId)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_tblTask_tblColumn");
+
+                entity.HasOne(d => d.Milestone)
+                    .WithMany(p => p.tblTasks)
+                    .HasForeignKey(d => d.MilestoneId)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("FK_tblTask_tblMilestone");
+
+                entity.HasOne(d => d.Assignee)
+                            .WithMany(p => p.Tasks)
+                            .HasForeignKey(d => d.AssigneeId)
+                            .OnDelete(DeleteBehavior.SetNull)
+                            .HasConstraintName("FK_tblTask_tblUser");
+
+                entity.HasOne(d => d.Tag)
+                    .WithMany(p => p.tblTasks)
+                    .HasForeignKey(d => d.TagId)
+                    .OnDelete(DeleteBehavior.SetNull)
+                    .HasConstraintName("FK_tblTask_tblTag");
+
+                // Add indexes
+                entity.HasIndex(e => new { e.ColumnId, e.Order });
+                entity.HasIndex(e => e.AssigneeId);
+                entity.HasIndex(e => e.MilestoneId);
+            });
+        }
+        // Sample seed data method to add to OnModelCreating
+        private void SeedData(ModelBuilder modelBuilder)
+        {
+            // Generate GUIDs for sample data
+            var userId = Guid.NewGuid();
+            var projectId = Guid.NewGuid();
+            var boardId = Guid.NewGuid();
+            var columnIds = new[] { Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid() };
+            var goalId = Guid.NewGuid();
+            var milestoneId = Guid.NewGuid();
+            var tagIds = new[] { Guid.NewGuid(), Guid.NewGuid() };
+            var taskIds = new[] { Guid.NewGuid(), Guid.NewGuid() };
+
+            // Seed User
+            modelBuilder.Entity<tblUser>().HasData(new tblUser
             {
-                Id = taskId[0], // Use the pre-generated task Id
-                MilestoneId = milestoneId[0], // Assign valid MilestoneId
-                StatusId = statusId[0], // Assign valid StatusId
-                UserId = userId[0], // Assign valid UserId
-                TagId = tagId[0], // Assign valid TagId
-                Title = "Complete Chapter 1",
-                Description = "Read and complete exercises in Chapter 1 of the textbook.",
-                Date = DateTime.Now.AddDays(7),
-                
+                Id = userId,
+                FirstName = "John",
+                LastName = "Doe",
+                Email = "john.doe@example.com",
+                Password = GetHash("SecurePass123"),
             });
 
-            modelBuilder.Entity<tblTask>().HasData(new tblTask
+            // Seed Project
+            modelBuilder.Entity<tblProject>().HasData(new tblProject
             {
-                Id = taskId[1], // Use the pre-generated task Id
-                MilestoneId = milestoneId[1], // Assign valid MilestoneId
-                UserId = userId[1], // Assign valid UserId
-                StatusId = statusId[1], // Assign valid StatusId
-                TagId = tagId[1], // Assign valid TagId
-                Title = "Write Book Review",
-                Description = "Write a review of the latest book read.",
-                Date = DateTime.Now.AddDays(14)
+                Id = projectId,
+                OwnerId = userId,
+                Name = "Website Redesign",
+                Description = "Complete overhaul of company website",
+                CreatedAt = DateTime.UtcNow
             });
 
+            // Seed Board
+            modelBuilder.Entity<tblBoard>().HasData(new tblBoard
+            {
+                Id = boardId,
+                ProjectId = projectId,
+                Name = "Development Tasks",
+                Description = "Track development progress",
+                CreatedAt = DateTime.UtcNow
+            });
+
+            // Seed Columns
+            modelBuilder.Entity<tblColumn>().HasData(
+                new tblColumn
+                {
+                    Id = columnIds[0],
+                    BoardId = boardId,
+                    Name = "To Do",
+                    Order = 1,
+                    WIPLimit = 5,
+                    CreatedAt = DateTime.UtcNow
+                },
+                new tblColumn
+                {
+                    Id = columnIds[1],
+                    BoardId = boardId,
+                    Name = "In Progress",
+                    Order = 2,
+                    WIPLimit = 3,
+                    CreatedAt = DateTime.UtcNow
+                },
+                new tblColumn
+                {
+                    Id = columnIds[2],
+                    BoardId = boardId,
+                    Name = "Done",
+                    Order = 3,
+                    WIPLimit = null,
+                    CreatedAt = DateTime.UtcNow
+                }
+            );
+
+            // Seed Goal
+            modelBuilder.Entity<tblGoal>().HasData(new tblGoal
+            {
+                Id = goalId,
+                ProjectId = projectId,
+                Title = "Launch New Website",
+                Description = "Complete and launch the new company website",
+                DueDate = DateTime.UtcNow.AddMonths(3),
+                Progress = 0,
+                CreatedAt = DateTime.UtcNow
+            });
+
+            // Seed Milestone
+            modelBuilder.Entity<tblMilestone>().HasData(new tblMilestone
+            {
+                Id = milestoneId,
+                GoalId = goalId,
+                Title = "Frontend Development",
+                Description = "Complete all frontend components",
+                DueDate = DateTime.UtcNow.AddMonths(1),
+                Status = "NotStarted",
+                CreatedAt = DateTime.UtcNow
+            });
+
+            // Seed Tags
+            modelBuilder.Entity<tblTag>().HasData(
+                new tblTag
+                {
+                    Id = tagIds[0],
+                    Name = "Frontend",
+                    Color = "#FF5733",
+                    CreatedAt = DateTime.UtcNow
+                },
+                new tblTag
+                {
+                    Id = tagIds[1],
+                    Name = "High Priority",
+                    Color = "#C70039",
+                    CreatedAt = DateTime.UtcNow
+                }
+            );
+
+            // Seed Tasks
+            modelBuilder.Entity<tblTask>().HasData(
+                new tblTask
+                {
+                    Id = taskIds[0],
+                    ColumnId = columnIds[0],
+                    MilestoneId = milestoneId,
+                    AssigneeId = userId,
+                    TagId = tagIds[0],
+                    Title = "Design Homepage",
+                    Description = "Create responsive design for homepage",
+                    DueDate = DateTime.UtcNow.AddDays(7),
+                    Order = 1,
+                    Priority = "High",
+                    CreatedAt = DateTime.UtcNow
+                },
+                new tblTask
+                {
+                    Id = taskIds[1],
+                    ColumnId = columnIds[0],
+                    MilestoneId = milestoneId,
+                    AssigneeId = userId,
+                    TagId = tagIds[1],
+                    Title = "Setup Navigation",
+                    Description = "Implement responsive navigation menu",
+                    DueDate = DateTime.UtcNow.AddDays(5),
+                    Order = 2,
+                    Priority = "Medium",
+                    CreatedAt = DateTime.UtcNow
+                }
+            );
         }
 
 
-
-
-
-        private static string GetHash(string Password)
+        private static string GetHash(string password)
         {
-            using (var hasher = new System.Security.Cryptography.SHA1Managed())
+            using (var hasher = new System.Security.Cryptography.SHA256Managed())
             {
-                var hashbytes = System.Text.Encoding.UTF8.GetBytes(Password);
-                return Convert.ToBase64String(hasher.ComputeHash(hashbytes));
+                var hashBytes = System.Text.Encoding.UTF8.GetBytes(password);
+                return Convert.ToBase64String(hasher.ComputeHash(hashBytes));
             }
         }
     }

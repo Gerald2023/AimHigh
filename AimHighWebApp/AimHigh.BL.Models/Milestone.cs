@@ -6,19 +6,24 @@ using System.Threading.Tasks;
 
 namespace AimHigh.BL.Models
 {
-    public class Milestone
+    public enum MilestoneStatus
     {
-        public Guid Id { get; set; }
+        NotStarted,
+        InProgress,
+        Completed,
+        OnHold
+    }
 
-        public Guid GoalId { get; set; } //FK
-
+    public class Milestone : BaseEntity
+    {
+        public Guid GoalId { get; set; }
         public string Title { get; set; }
-
         public string Description { get; set; }
+        public DateTime DueDate { get; set; }
+        public MilestoneStatus Status { get; set; }
 
-        public DateTime Date { get; set; }
-
-        public string Status { get; set; }
-
+        // Navigation properties
+        public virtual Goal Goal { get; set; }
+        public virtual ICollection<Task> Tasks { get; set; }
     }
 }
