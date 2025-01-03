@@ -13,8 +13,6 @@ namespace AimHigh.BL.Models
         public int Order { get; set; }
         public int? WIPLimit { get; set; }  // Work In Progress limit
 
-        // Navigation properties
-        public virtual Board Board { get; set; }
-        public virtual ICollection<Task> Tasks { get; set; }
+      
     }
 }

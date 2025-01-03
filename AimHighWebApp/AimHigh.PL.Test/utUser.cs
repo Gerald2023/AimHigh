@@ -3,60 +3,114 @@ namespace AimHigh.PL.Test
     [TestClass]
     public class utUser : utBase<tblUser>
     {
-
-        [TestMethod]
-        public void LoadTest()
+        private tblUser CreateValidUser()
         {
-            Assert.IsTrue(base.LoadTest().Count() > 0);
-
+            return new tblUser
+            {
+                Id = Guid.NewGuid(),
+                FirstName = "Test",
+                LastName = "User",
+                Email = "test.user@example.com",
+                Password = "TestPass123"
+            };
         }
 
         [TestMethod]
-        public void InsertTest()
+        public void Load_ShouldReturnSeededUsers()
         {
-            tblUser newRow = new tblUser();
+            // Arrange & Act
+            var users = base.LoadTest();
 
-            newRow.Id = Guid.NewGuid();
-            newRow.FirstName = "Joe";
-            newRow.LastName = "Billings";
-            newRow.Password = "YYYYY";
-            newRow.Email = "xxxx@gmail.com";
+            // Assert
+            Assert.IsNotNull(users);
+            Assert.IsTrue(users.Any());
+        }
 
-            dc.tblUsers.Add(newRow);
-            int rowsAffected = dc.SaveChanges();
+        [TestMethod]
+        public void Insert_ValidUser_ShouldSucceed()
+        {
+            // Arrange
+            var newUser = CreateValidUser();
 
+            // Act
+            int rowsAffected = base.InsertTest(newUser);
+
+            // Assert
             Assert.AreEqual(1, rowsAffected);
+            var savedUser = dc.tblUsers.Find(newUser.Id);
+            Assert.IsNotNull(savedUser);
+            Assert.AreEqual(newUser.Email, savedUser.Email);
         }
 
         [TestMethod]
-        public void UpdateTest()
+        public void Insert_DuplicateEmail_ShouldFail()
         {
-            tblUser row = base.LoadTest().FirstOrDefault(x => x.FirstName == "Gerald");
+            // Arrange
+            var user1 = CreateValidUser();
+            base.InsertTest(user1);
 
-            if (row != null)
-            {
-                row.FirstName = "Test";
-                int rowsAffected = UpdateTest(row);
+            var user2 = CreateValidUser();
+            user2.Id = Guid.NewGuid();
+            user2.Email = user1.Email; // Same email
 
-                Assert.AreEqual(1, rowsAffected);
-            }
+            // Act & Assert
+            Assert.ThrowsException<DbUpdateException>(() => base.InsertTest(user2));
         }
 
+        [TestMethod]
+        public void Update_ValidUser_ShouldSucceed()
+        {
+            // Arrange
+            var user = CreateValidUser();
+            base.InsertTest(user);
+
+            // Act
+            string newFirstName = "Updated";
+            user.FirstName = newFirstName;
+            int rowsAffected = base.UpdateTest(user);
+
+            // Assert
+            Assert.AreEqual(1, rowsAffected);
+            var updatedUser = dc.tblUsers.Find(user.Id);
+            Assert.AreEqual(newFirstName, updatedUser.FirstName);
+        }
 
         [TestMethod]
-        public void DeleteTest()
+        public void Delete_ExistingUser_ShouldSucceed()
         {
+            // Arrange
+            var user = CreateValidUser();
+            base.InsertTest(user);
 
-            tblUser row = base.LoadTest().FirstOrDefault(x => x.FirstName == "Gerald");
+            // Act
+            int rowsAffected = base.DeleteTest(user);
 
-            if (row != null)
+            // Assert
+            Assert.AreEqual(1, rowsAffected);
+            var deletedUser = dc.tblUsers.Find(user.Id);
+            Assert.IsNull(deletedUser);
+        }
+
+        [TestMethod]
+        public void Delete_UserWithProjects_ShouldFail()
+        {
+            // Arrange
+            var user = CreateValidUser();
+            base.InsertTest(user);
+
+            var project = new tblProject
             {
-                dc.tblUsers.Remove(row);
-                int rowsAffected = dc.SaveChanges();
+                Id = Guid.NewGuid(),
+                UserId = user.Id,
+                Name = "Test Project",
+                Description = "Test Description",
+                CreatedAt = DateTime.UtcNow
+            };
+            dc.tblProjects.Add(project);
+            dc.SaveChanges();
 
-                Assert.IsTrue(rowsAffected == 1);
-            }
-
+            // Act & Assert
+            Assert.ThrowsException<DbUpdateException>(() => base.DeleteTest(user));
         }
     }
 }

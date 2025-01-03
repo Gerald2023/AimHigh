@@ -4,15 +4,13 @@
 
 namespace AimHigh.PL.Entities
 {
-    public class tblTag : IEntity
+    public class tblTag : BaseEntity
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Color { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime? ModifiedAt { get; set; }
+
 
         // Navigation properties
-        public virtual ICollection<tblTask> tblTasks { get; set; }
+        public virtual ICollection<tblTask> Tasks { get; set; }
     }
 }

@@ -19,8 +19,6 @@ namespace AimHigh.BL.Models
         [DisplayName("Full Name")]
         public string FullName { get { return FirstName + " " + LastName; } }
 
-        // Navigation properties
-        public virtual ICollection<Project> OwnedProjects { get; set; }
-        public virtual ICollection<Task> AssignedTasks { get; set; }
+        
     }
 }

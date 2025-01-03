@@ -10,8 +10,5 @@ namespace AimHigh.BL.Models
     {
         public string Name { get; set; }
         public string Color { get; set; }
-
-        // Navigation properties
-        public virtual ICollection<Task> Tasks { get; set; }
     }
 }

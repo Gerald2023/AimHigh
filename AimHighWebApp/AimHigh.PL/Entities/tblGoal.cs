@@ -3,19 +3,16 @@
 
 namespace AimHigh.PL.Entities
 {
-    public class tblGoal : IEntity
+    public class tblGoal : BaseEntity
     {
-        public Guid Id { get; set; }
         public Guid ProjectId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public DateTime DueDate { get; set; }
         public float Progress { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime? ModifiedAt { get; set; }
 
         // Navigation properties
         public virtual tblProject Project { get; set; }
-        public virtual ICollection<tblMilestone> tblMilestones { get; set; }
+        public virtual ICollection<tblMilestone> Milestones { get; set; }
     }
 }

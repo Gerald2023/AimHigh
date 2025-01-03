@@ -4,9 +4,8 @@ using System.Data.Common;
 
 namespace AimHigh.PL.Entities
 {
-    public class tblUser : IEntity
+    public class tblUser : BaseEntity
     {
-        public Guid Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }

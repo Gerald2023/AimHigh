@@ -14,9 +14,7 @@ namespace AimHigh.BL.Models
         public DateTime DueDate { get; set; }
         public float Progress { get; set; }
 
-        // Navigation properties
-        public virtual Project Project { get; set; }
-        public virtual ICollection<Milestone> Milestones { get; set; }
+        
     }
 }
 
