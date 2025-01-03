@@ -178,8 +178,9 @@ namespace AimHigh.PL.Data
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Projects)
+                    .IsRequired() 
                     .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.Restrict)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_tblProject_tblUser");
 
                 entity.HasIndex(e => e.UserId);

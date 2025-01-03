@@ -98,8 +98,7 @@ namespace AimHigh.PL.Migrations
                         name: "FK_tblProject_tblUser",
                         column: x => x.UserId,
                         principalTable: "tblUser",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -258,9 +257,9 @@ namespace AimHigh.PL.Migrations
                 columns: new[] { "Id", "CreatedAt", "Description", "DisplayOrder", "IsActive", "ModifiedAt", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("b4040d49-4cd0-4c03-84c3-3972eb27eda9"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Milestone completed", 3, true, null, "Completed" },
-                    { new Guid("ea9b2fa5-6dff-4d09-a9d1-828a0010e6b0"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Milestone not started", 1, true, null, "Not Started" },
-                    { new Guid("f756a3d6-1b18-44b0-9bb3-f5158569cce1"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Milestone in progress", 2, true, null, "In Progress" }
+                    { new Guid("019cd1a7-0156-4970-bf7b-5f400ff5a143"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Milestone not started", 1, true, null, "Not Started" },
+                    { new Guid("cadf4f1d-15da-446d-8de7-9763f84529b2"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Milestone completed", 3, true, null, "Completed" },
+                    { new Guid("ef1634ea-b4ed-455e-a015-b63e6058f678"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Milestone in progress", 2, true, null, "In Progress" }
                 });
 
             migrationBuilder.InsertData(
@@ -268,9 +267,9 @@ namespace AimHigh.PL.Migrations
                 columns: new[] { "Id", "ColorCode", "CreatedAt", "Description", "DisplayOrder", "IsActive", "ModifiedAt", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("9a23b152-0af2-4ab1-95a8-e861ae304881"), "#FF0000", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "High priority", 3, true, null, "High" },
-                    { new Guid("d0524789-8ba9-4b25-a261-7994bf6455aa"), "#FFFF00", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Medium priority", 2, true, null, "Medium" },
-                    { new Guid("df7ffb9e-b58a-4b91-a7d6-587bf8ad0e3e"), "#00FF00", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Low priority", 1, true, null, "Low" }
+                    { new Guid("0a67b914-5e01-4e66-bb59-6d27f95ef957"), "#FF0000", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "High priority", 3, true, null, "High" },
+                    { new Guid("0e1822f2-99a3-4d16-9186-13a2eef774a4"), "#00FF00", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Low priority", 1, true, null, "Low" },
+                    { new Guid("9a74695a-bfd1-46bf-b6d0-99c40650bc6e"), "#FFFF00", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Medium priority", 2, true, null, "Medium" }
                 });
 
             migrationBuilder.InsertData(
@@ -278,8 +277,8 @@ namespace AimHigh.PL.Migrations
                 columns: new[] { "Id", "Color", "CreatedAt", "ModifiedAt", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("397379a2-677d-4698-99ab-e7c9981f7855"), "#FF0000", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Bug" },
-                    { new Guid("97030249-9ade-4950-b911-7b641c785933"), "#00FF00", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Feature" }
+                    { new Guid("9f5baf7c-4283-4ae2-81d6-028176c013f4"), "#00FF00", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Feature" },
+                    { new Guid("dc7ca0d7-8bb4-4ef3-8a74-5b6e677f9c87"), "#FF0000", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Bug" }
                 });
 
             migrationBuilder.InsertData(
@@ -287,8 +286,8 @@ namespace AimHigh.PL.Migrations
                 columns: new[] { "Id", "CreatedAt", "Email", "FirstName", "LastName", "ModifiedAt", "Password" },
                 values: new object[,]
                 {
-                    { new Guid("f6f63289-c9a9-488c-9fd4-264c5ef271b6"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "john.doe@example.com", "John", "Doe", null, "75K3eLr+dx6JJFuJ7LwIpEpOFmwGZZkRiB84PURz6U8=" },
-                    { new Guid("f7abeec3-99c6-411d-b4cd-d7ae202abf58"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "jane.smith@example.com", "Jane", "Smith", null, "75K3eLr+dx6JJFuJ7LwIpEpOFmwGZZkRiB84PURz6U8=" }
+                    { new Guid("6fc8385a-4782-4cd0-9162-1c14e29880d0"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "john.doe@example.com", "John", "Doe", null, "75K3eLr+dx6JJFuJ7LwIpEpOFmwGZZkRiB84PURz6U8=" },
+                    { new Guid("dd6e3868-2ded-4ef5-b56f-9224f6ebda75"), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "jane.smith@example.com", "Jane", "Smith", null, "75K3eLr+dx6JJFuJ7LwIpEpOFmwGZZkRiB84PURz6U8=" }
                 });
 
             migrationBuilder.InsertData(
@@ -296,8 +295,8 @@ namespace AimHigh.PL.Migrations
                 columns: new[] { "Id", "CreatedAt", "Description", "ModifiedAt", "Name", "UserId" },
                 values: new object[,]
                 {
-                    { new Guid("0d349673-ab12-4bf6-a1af-dc2e4b427ac3"), new DateTime(2025, 1, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5397), "Second project", null, "Project Beta", new Guid("f7abeec3-99c6-411d-b4cd-d7ae202abf58") },
-                    { new Guid("95e8a120-65fe-4b35-933f-cb8f8071548d"), new DateTime(2025, 1, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5395), "First project", null, "Project Alpha", new Guid("f6f63289-c9a9-488c-9fd4-264c5ef271b6") }
+                    { new Guid("3df57df9-d100-47f9-9ae4-4e105f12e712"), new DateTime(2025, 1, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(8942), "Second project", null, "Project Beta", new Guid("dd6e3868-2ded-4ef5-b56f-9224f6ebda75") },
+                    { new Guid("75a1a40a-5a9f-4352-8272-ad0e63ed7ab8"), new DateTime(2025, 1, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(8940), "First project", null, "Project Alpha", new Guid("6fc8385a-4782-4cd0-9162-1c14e29880d0") }
                 });
 
             migrationBuilder.InsertData(
@@ -305,8 +304,8 @@ namespace AimHigh.PL.Migrations
                 columns: new[] { "Id", "CreatedAt", "Description", "ModifiedAt", "Name", "ProjectId" },
                 values: new object[,]
                 {
-                    { new Guid("11dca8c5-6bb7-41b1-b5ae-aecffdfd6e81"), new DateTime(2025, 1, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5424), "Sprint planning board", null, "Sprint Board", new Guid("0d349673-ab12-4bf6-a1af-dc2e4b427ac3") },
-                    { new Guid("ee008b61-7d81-4b28-909f-d4026d19708b"), new DateTime(2025, 1, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5423), "Main project board", null, "Main Board", new Guid("95e8a120-65fe-4b35-933f-cb8f8071548d") }
+                    { new Guid("1bd3802b-69cf-4af2-a98e-8cc1c0be373d"), new DateTime(2025, 1, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(8969), "Sprint planning board", null, "Sprint Board", new Guid("3df57df9-d100-47f9-9ae4-4e105f12e712") },
+                    { new Guid("acf38b32-9583-4f95-a637-8a13db7dfe7e"), new DateTime(2025, 1, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(8968), "Main project board", null, "Main Board", new Guid("75a1a40a-5a9f-4352-8272-ad0e63ed7ab8") }
                 });
 
             migrationBuilder.InsertData(
@@ -314,8 +313,8 @@ namespace AimHigh.PL.Migrations
                 columns: new[] { "Id", "CreatedAt", "Description", "DueDate", "ModifiedAt", "Progress", "ProjectId", "Title" },
                 values: new object[,]
                 {
-                    { new Guid("9b88d847-3eaf-41da-a0c2-d3365693b021"), new DateTime(2025, 1, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5452), "First quarter objectives", new DateTime(2025, 4, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5446), null, 0.0, new Guid("95e8a120-65fe-4b35-933f-cb8f8071548d"), "Q1 Goals" },
-                    { new Guid("d2e75232-d77b-4b8c-a225-1ed986b3fe5a"), new DateTime(2025, 1, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5454), "Second quarter objectives", new DateTime(2025, 7, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5453), null, 0.0, new Guid("0d349673-ab12-4bf6-a1af-dc2e4b427ac3"), "Q2 Goals" }
+                    { new Guid("13c60603-ea4a-4421-ac63-3ea3bc7a8c65"), new DateTime(2025, 1, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(9004), "First quarter objectives", new DateTime(2025, 4, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(8997), null, 0.0, new Guid("75a1a40a-5a9f-4352-8272-ad0e63ed7ab8"), "Q1 Goals" },
+                    { new Guid("e00f02fa-ab86-46dc-8d28-f05bdc4c9845"), new DateTime(2025, 1, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(9006), "Second quarter objectives", new DateTime(2025, 7, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(9005), null, 0.0, new Guid("3df57df9-d100-47f9-9ae4-4e105f12e712"), "Q2 Goals" }
                 });
 
             migrationBuilder.InsertData(
@@ -323,9 +322,9 @@ namespace AimHigh.PL.Migrations
                 columns: new[] { "Id", "BoardId", "CreatedAt", "ModifiedAt", "Name", "Order", "WIPLimit" },
                 values: new object[,]
                 {
-                    { new Guid("96fed779-44a0-4b9a-98de-3be19c925416"), new Guid("ee008b61-7d81-4b28-909f-d4026d19708b"), new DateTime(2025, 1, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5478), null, "To Do", 1, null },
-                    { new Guid("b6d2c9b7-d114-4f9e-8fd0-b763c4537ae6"), new Guid("ee008b61-7d81-4b28-909f-d4026d19708b"), new DateTime(2025, 1, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5480), null, "Done", 3, null },
-                    { new Guid("dc94c6fc-1516-4a64-ade3-36bf04a8a7fb"), new Guid("ee008b61-7d81-4b28-909f-d4026d19708b"), new DateTime(2025, 1, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5479), null, "In Progress", 2, null }
+                    { new Guid("2793736b-faef-46df-b6f6-a02c59a725b1"), new Guid("acf38b32-9583-4f95-a637-8a13db7dfe7e"), new DateTime(2025, 1, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(9033), null, "Done", 3, null },
+                    { new Guid("4d03991b-fa58-4a96-b080-5b6e05ec7d21"), new Guid("acf38b32-9583-4f95-a637-8a13db7dfe7e"), new DateTime(2025, 1, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(9032), null, "In Progress", 2, null },
+                    { new Guid("a3f51342-eb10-4b6f-bb42-e9a726cc3ea3"), new Guid("acf38b32-9583-4f95-a637-8a13db7dfe7e"), new DateTime(2025, 1, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(9031), null, "To Do", 1, null }
                 });
 
             migrationBuilder.InsertData(
@@ -333,8 +332,8 @@ namespace AimHigh.PL.Migrations
                 columns: new[] { "Id", "CreatedAt", "Description", "DueDate", "GoalId", "MilestoneStatusId", "ModifiedAt", "Title" },
                 values: new object[,]
                 {
-                    { new Guid("55be96bf-d411-4cac-9ace-96587adddd82"), new DateTime(2025, 1, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5503), "Second sprint milestone", new DateTime(2025, 3, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5503), new Guid("9b88d847-3eaf-41da-a0c2-d3365693b021"), new Guid("ea9b2fa5-6dff-4d09-a9d1-828a0010e6b0"), null, "Sprint 2" },
-                    { new Guid("cd473337-85bd-4cec-8542-93264ba38679"), new DateTime(2025, 1, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5501), "First sprint milestone", new DateTime(2025, 2, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5500), new Guid("9b88d847-3eaf-41da-a0c2-d3365693b021"), new Guid("ea9b2fa5-6dff-4d09-a9d1-828a0010e6b0"), null, "Sprint 1" }
+                    { new Guid("2a5b501e-b53c-4027-8351-923cc5cb6875"), new DateTime(2025, 1, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(9056), "First sprint milestone", new DateTime(2025, 2, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(9055), new Guid("13c60603-ea4a-4421-ac63-3ea3bc7a8c65"), new Guid("019cd1a7-0156-4970-bf7b-5f400ff5a143"), null, "Sprint 1" },
+                    { new Guid("526fcb90-921f-465c-a2a5-25c08965cb04"), new DateTime(2025, 1, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(9059), "Second sprint milestone", new DateTime(2025, 3, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(9058), new Guid("13c60603-ea4a-4421-ac63-3ea3bc7a8c65"), new Guid("019cd1a7-0156-4970-bf7b-5f400ff5a143"), null, "Sprint 2" }
                 });
 
             migrationBuilder.InsertData(
@@ -342,8 +341,8 @@ namespace AimHigh.PL.Migrations
                 columns: new[] { "Id", "AssigneeId", "ColumnId", "CreatedAt", "Description", "DueDate", "MilestoneId", "ModifiedAt", "Order", "PriorityId", "TagId", "Title" },
                 values: new object[,]
                 {
-                    { new Guid("7d5a3a4d-56cb-4ea1-b4ad-d5b2c2114249"), new Guid("f7abeec3-99c6-411d-b4cd-d7ae202abf58"), new Guid("dc94c6fc-1516-4a64-ade3-36bf04a8a7fb"), new DateTime(2025, 1, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5537), "Resolve authentication issues", new DateTime(2025, 1, 6, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5536), new Guid("cd473337-85bd-4cec-8542-93264ba38679"), new DateTime(2025, 1, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5537), 1, new Guid("9a23b152-0af2-4ab1-95a8-e861ae304881"), new Guid("397379a2-677d-4698-99ab-e7c9981f7855"), "Fix Login Bug" },
-                    { new Guid("af0c1ef3-015d-49aa-9b61-c45a58c02e57"), new Guid("f6f63289-c9a9-488c-9fd4-264c5ef271b6"), new Guid("96fed779-44a0-4b9a-98de-3be19c925416"), new DateTime(2025, 1, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5532), "Set up project infrastructure", new DateTime(2025, 1, 10, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5528), new Guid("cd473337-85bd-4cec-8542-93264ba38679"), new DateTime(2025, 1, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5532), 1, new Guid("d0524789-8ba9-4b25-a261-7994bf6455aa"), new Guid("97030249-9ade-4950-b911-7b641c785933"), "Initial Setup" }
+                    { new Guid("03443b40-0a1f-4a8f-ad45-c19e73d5bfad"), new Guid("6fc8385a-4782-4cd0-9162-1c14e29880d0"), new Guid("a3f51342-eb10-4b6f-bb42-e9a726cc3ea3"), new DateTime(2025, 1, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(9086), "Set up project infrastructure", new DateTime(2025, 1, 10, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(9082), new Guid("2a5b501e-b53c-4027-8351-923cc5cb6875"), new DateTime(2025, 1, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(9086), 1, new Guid("9a74695a-bfd1-46bf-b6d0-99c40650bc6e"), new Guid("9f5baf7c-4283-4ae2-81d6-028176c013f4"), "Initial Setup" },
+                    { new Guid("de4a3ca1-07b1-4b38-9751-ffa2363b8bd3"), new Guid("dd6e3868-2ded-4ef5-b56f-9224f6ebda75"), new Guid("4d03991b-fa58-4a96-b080-5b6e05ec7d21"), new DateTime(2025, 1, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(9091), "Resolve authentication issues", new DateTime(2025, 1, 6, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(9091), new Guid("2a5b501e-b53c-4027-8351-923cc5cb6875"), new DateTime(2025, 1, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(9092), 1, new Guid("0a67b914-5e01-4e66-bb59-6d27f95ef957"), new Guid("dc7ca0d7-8bb4-4ef3-8a74-5b6e677f9c87"), "Fix Login Bug" }
                 });
 
             migrationBuilder.CreateIndex(

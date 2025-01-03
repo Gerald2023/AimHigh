@@ -1,3 +1,6 @@
+using Microsoft.Data.SqlClient;
+using static System.Net.Mime.MediaTypeNames;
+
 namespace AimHigh.PL.Test
 {
     [TestClass]
@@ -91,6 +94,8 @@ namespace AimHigh.PL.Test
             Assert.IsNull(deletedUser);
         }
 
+
+        //it tests that we can't delete a user that has associated projects
         [TestMethod]
         public void Delete_UserWithProjects_ShouldFail()
         {
@@ -110,7 +115,13 @@ namespace AimHigh.PL.Test
             dc.SaveChanges();
 
             // Act & Assert
-            Assert.ThrowsException<DbUpdateException>(() => base.DeleteTest(user));
+            var exception = Assert.ThrowsException<InvalidOperationException>(() =>
+                base.DeleteTest(user)
+            );
+
+            // Verify it's the correct error message about required relationships
+            Assert.IsTrue(exception.Message.Contains("relationship is either marked as required"),
+                "Expected error about required relationship");
         }
     }
 }

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AimHigh.PL.Migrations
 {
     [DbContext(typeof(AimHighEntities))]
-    [Migration("20250103190200_CreateDatabase")]
+    [Migration("20250103192459_CreateDatabase")]
     partial class CreateDatabase
     {
         /// <inheritdoc />
@@ -63,19 +63,19 @@ namespace AimHigh.PL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("ee008b61-7d81-4b28-909f-d4026d19708b"),
-                            CreatedAt = new DateTime(2025, 1, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5423),
+                            Id = new Guid("acf38b32-9583-4f95-a637-8a13db7dfe7e"),
+                            CreatedAt = new DateTime(2025, 1, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(8968),
                             Description = "Main project board",
                             Name = "Main Board",
-                            ProjectId = new Guid("95e8a120-65fe-4b35-933f-cb8f8071548d")
+                            ProjectId = new Guid("75a1a40a-5a9f-4352-8272-ad0e63ed7ab8")
                         },
                         new
                         {
-                            Id = new Guid("11dca8c5-6bb7-41b1-b5ae-aecffdfd6e81"),
-                            CreatedAt = new DateTime(2025, 1, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5424),
+                            Id = new Guid("1bd3802b-69cf-4af2-a98e-8cc1c0be373d"),
+                            CreatedAt = new DateTime(2025, 1, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(8969),
                             Description = "Sprint planning board",
                             Name = "Sprint Board",
-                            ProjectId = new Guid("0d349673-ab12-4bf6-a1af-dc2e4b427ac3")
+                            ProjectId = new Guid("3df57df9-d100-47f9-9ae4-4e105f12e712")
                         });
                 });
 
@@ -115,25 +115,25 @@ namespace AimHigh.PL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("96fed779-44a0-4b9a-98de-3be19c925416"),
-                            BoardId = new Guid("ee008b61-7d81-4b28-909f-d4026d19708b"),
-                            CreatedAt = new DateTime(2025, 1, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5478),
+                            Id = new Guid("a3f51342-eb10-4b6f-bb42-e9a726cc3ea3"),
+                            BoardId = new Guid("acf38b32-9583-4f95-a637-8a13db7dfe7e"),
+                            CreatedAt = new DateTime(2025, 1, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(9031),
                             Name = "To Do",
                             Order = 1
                         },
                         new
                         {
-                            Id = new Guid("dc94c6fc-1516-4a64-ade3-36bf04a8a7fb"),
-                            BoardId = new Guid("ee008b61-7d81-4b28-909f-d4026d19708b"),
-                            CreatedAt = new DateTime(2025, 1, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5479),
+                            Id = new Guid("4d03991b-fa58-4a96-b080-5b6e05ec7d21"),
+                            BoardId = new Guid("acf38b32-9583-4f95-a637-8a13db7dfe7e"),
+                            CreatedAt = new DateTime(2025, 1, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(9032),
                             Name = "In Progress",
                             Order = 2
                         },
                         new
                         {
-                            Id = new Guid("b6d2c9b7-d114-4f9e-8fd0-b763c4537ae6"),
-                            BoardId = new Guid("ee008b61-7d81-4b28-909f-d4026d19708b"),
-                            CreatedAt = new DateTime(2025, 1, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5480),
+                            Id = new Guid("2793736b-faef-46df-b6f6-a02c59a725b1"),
+                            BoardId = new Guid("acf38b32-9583-4f95-a637-8a13db7dfe7e"),
+                            CreatedAt = new DateTime(2025, 1, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(9033),
                             Name = "Done",
                             Order = 3
                         });
@@ -180,22 +180,22 @@ namespace AimHigh.PL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("9b88d847-3eaf-41da-a0c2-d3365693b021"),
-                            CreatedAt = new DateTime(2025, 1, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5452),
+                            Id = new Guid("13c60603-ea4a-4421-ac63-3ea3bc7a8c65"),
+                            CreatedAt = new DateTime(2025, 1, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(9004),
                             Description = "First quarter objectives",
-                            DueDate = new DateTime(2025, 4, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5446),
+                            DueDate = new DateTime(2025, 4, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(8997),
                             Progress = 0.0,
-                            ProjectId = new Guid("95e8a120-65fe-4b35-933f-cb8f8071548d"),
+                            ProjectId = new Guid("75a1a40a-5a9f-4352-8272-ad0e63ed7ab8"),
                             Title = "Q1 Goals"
                         },
                         new
                         {
-                            Id = new Guid("d2e75232-d77b-4b8c-a225-1ed986b3fe5a"),
-                            CreatedAt = new DateTime(2025, 1, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5454),
+                            Id = new Guid("e00f02fa-ab86-46dc-8d28-f05bdc4c9845"),
+                            CreatedAt = new DateTime(2025, 1, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(9006),
                             Description = "Second quarter objectives",
-                            DueDate = new DateTime(2025, 7, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5453),
+                            DueDate = new DateTime(2025, 7, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(9005),
                             Progress = 0.0,
-                            ProjectId = new Guid("0d349673-ab12-4bf6-a1af-dc2e4b427ac3"),
+                            ProjectId = new Guid("3df57df9-d100-47f9-9ae4-4e105f12e712"),
                             Title = "Q2 Goals"
                         });
                 });
@@ -243,22 +243,22 @@ namespace AimHigh.PL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("cd473337-85bd-4cec-8542-93264ba38679"),
-                            CreatedAt = new DateTime(2025, 1, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5501),
+                            Id = new Guid("2a5b501e-b53c-4027-8351-923cc5cb6875"),
+                            CreatedAt = new DateTime(2025, 1, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(9056),
                             Description = "First sprint milestone",
-                            DueDate = new DateTime(2025, 2, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5500),
-                            GoalId = new Guid("9b88d847-3eaf-41da-a0c2-d3365693b021"),
-                            MilestoneStatusId = new Guid("ea9b2fa5-6dff-4d09-a9d1-828a0010e6b0"),
+                            DueDate = new DateTime(2025, 2, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(9055),
+                            GoalId = new Guid("13c60603-ea4a-4421-ac63-3ea3bc7a8c65"),
+                            MilestoneStatusId = new Guid("019cd1a7-0156-4970-bf7b-5f400ff5a143"),
                             Title = "Sprint 1"
                         },
                         new
                         {
-                            Id = new Guid("55be96bf-d411-4cac-9ace-96587adddd82"),
-                            CreatedAt = new DateTime(2025, 1, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5503),
+                            Id = new Guid("526fcb90-921f-465c-a2a5-25c08965cb04"),
+                            CreatedAt = new DateTime(2025, 1, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(9059),
                             Description = "Second sprint milestone",
-                            DueDate = new DateTime(2025, 3, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5503),
-                            GoalId = new Guid("9b88d847-3eaf-41da-a0c2-d3365693b021"),
-                            MilestoneStatusId = new Guid("ea9b2fa5-6dff-4d09-a9d1-828a0010e6b0"),
+                            DueDate = new DateTime(2025, 3, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(9058),
+                            GoalId = new Guid("13c60603-ea4a-4421-ac63-3ea3bc7a8c65"),
+                            MilestoneStatusId = new Guid("019cd1a7-0156-4970-bf7b-5f400ff5a143"),
                             Title = "Sprint 2"
                         });
                 });
@@ -306,7 +306,7 @@ namespace AimHigh.PL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("ea9b2fa5-6dff-4d09-a9d1-828a0010e6b0"),
+                            Id = new Guid("019cd1a7-0156-4970-bf7b-5f400ff5a143"),
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Milestone not started",
                             DisplayOrder = 1,
@@ -315,7 +315,7 @@ namespace AimHigh.PL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f756a3d6-1b18-44b0-9bb3-f5158569cce1"),
+                            Id = new Guid("ef1634ea-b4ed-455e-a015-b63e6058f678"),
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Milestone in progress",
                             DisplayOrder = 2,
@@ -324,7 +324,7 @@ namespace AimHigh.PL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("b4040d49-4cd0-4c03-84c3-3972eb27eda9"),
+                            Id = new Guid("cadf4f1d-15da-446d-8de7-9763f84529b2"),
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Milestone completed",
                             DisplayOrder = 3,
@@ -382,7 +382,7 @@ namespace AimHigh.PL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("df7ffb9e-b58a-4b91-a7d6-587bf8ad0e3e"),
+                            Id = new Guid("0e1822f2-99a3-4d16-9186-13a2eef774a4"),
                             ColorCode = "#00FF00",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Low priority",
@@ -392,7 +392,7 @@ namespace AimHigh.PL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d0524789-8ba9-4b25-a261-7994bf6455aa"),
+                            Id = new Guid("9a74695a-bfd1-46bf-b6d0-99c40650bc6e"),
                             ColorCode = "#FFFF00",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Medium priority",
@@ -402,7 +402,7 @@ namespace AimHigh.PL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("9a23b152-0af2-4ab1-95a8-e861ae304881"),
+                            Id = new Guid("0a67b914-5e01-4e66-bb59-6d27f95ef957"),
                             ColorCode = "#FF0000",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "High priority",
@@ -447,19 +447,19 @@ namespace AimHigh.PL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("95e8a120-65fe-4b35-933f-cb8f8071548d"),
-                            CreatedAt = new DateTime(2025, 1, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5395),
+                            Id = new Guid("75a1a40a-5a9f-4352-8272-ad0e63ed7ab8"),
+                            CreatedAt = new DateTime(2025, 1, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(8940),
                             Description = "First project",
                             Name = "Project Alpha",
-                            UserId = new Guid("f6f63289-c9a9-488c-9fd4-264c5ef271b6")
+                            UserId = new Guid("6fc8385a-4782-4cd0-9162-1c14e29880d0")
                         },
                         new
                         {
-                            Id = new Guid("0d349673-ab12-4bf6-a1af-dc2e4b427ac3"),
-                            CreatedAt = new DateTime(2025, 1, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5397),
+                            Id = new Guid("3df57df9-d100-47f9-9ae4-4e105f12e712"),
+                            CreatedAt = new DateTime(2025, 1, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(8942),
                             Description = "Second project",
                             Name = "Project Beta",
-                            UserId = new Guid("f7abeec3-99c6-411d-b4cd-d7ae202abf58")
+                            UserId = new Guid("dd6e3868-2ded-4ef5-b56f-9224f6ebda75")
                         });
                 });
 
@@ -494,14 +494,14 @@ namespace AimHigh.PL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("397379a2-677d-4698-99ab-e7c9981f7855"),
+                            Id = new Guid("dc7ca0d7-8bb4-4ef3-8a74-5b6e677f9c87"),
                             Color = "#FF0000",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Bug"
                         },
                         new
                         {
-                            Id = new Guid("97030249-9ade-4950-b911-7b641c785933"),
+                            Id = new Guid("9f5baf7c-4283-4ae2-81d6-028176c013f4"),
                             Color = "#00FF00",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "Feature"
@@ -569,32 +569,32 @@ namespace AimHigh.PL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("af0c1ef3-015d-49aa-9b61-c45a58c02e57"),
-                            AssigneeId = new Guid("f6f63289-c9a9-488c-9fd4-264c5ef271b6"),
-                            ColumnId = new Guid("96fed779-44a0-4b9a-98de-3be19c925416"),
-                            CreatedAt = new DateTime(2025, 1, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5532),
+                            Id = new Guid("03443b40-0a1f-4a8f-ad45-c19e73d5bfad"),
+                            AssigneeId = new Guid("6fc8385a-4782-4cd0-9162-1c14e29880d0"),
+                            ColumnId = new Guid("a3f51342-eb10-4b6f-bb42-e9a726cc3ea3"),
+                            CreatedAt = new DateTime(2025, 1, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(9086),
                             Description = "Set up project infrastructure",
-                            DueDate = new DateTime(2025, 1, 10, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5528),
-                            MilestoneId = new Guid("cd473337-85bd-4cec-8542-93264ba38679"),
-                            ModifiedAt = new DateTime(2025, 1, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5532),
+                            DueDate = new DateTime(2025, 1, 10, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(9082),
+                            MilestoneId = new Guid("2a5b501e-b53c-4027-8351-923cc5cb6875"),
+                            ModifiedAt = new DateTime(2025, 1, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(9086),
                             Order = 1,
-                            PriorityId = new Guid("d0524789-8ba9-4b25-a261-7994bf6455aa"),
-                            TagId = new Guid("97030249-9ade-4950-b911-7b641c785933"),
+                            PriorityId = new Guid("9a74695a-bfd1-46bf-b6d0-99c40650bc6e"),
+                            TagId = new Guid("9f5baf7c-4283-4ae2-81d6-028176c013f4"),
                             Title = "Initial Setup"
                         },
                         new
                         {
-                            Id = new Guid("7d5a3a4d-56cb-4ea1-b4ad-d5b2c2114249"),
-                            AssigneeId = new Guid("f7abeec3-99c6-411d-b4cd-d7ae202abf58"),
-                            ColumnId = new Guid("dc94c6fc-1516-4a64-ade3-36bf04a8a7fb"),
-                            CreatedAt = new DateTime(2025, 1, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5537),
+                            Id = new Guid("de4a3ca1-07b1-4b38-9751-ffa2363b8bd3"),
+                            AssigneeId = new Guid("dd6e3868-2ded-4ef5-b56f-9224f6ebda75"),
+                            ColumnId = new Guid("4d03991b-fa58-4a96-b080-5b6e05ec7d21"),
+                            CreatedAt = new DateTime(2025, 1, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(9091),
                             Description = "Resolve authentication issues",
-                            DueDate = new DateTime(2025, 1, 6, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5536),
-                            MilestoneId = new Guid("cd473337-85bd-4cec-8542-93264ba38679"),
-                            ModifiedAt = new DateTime(2025, 1, 3, 19, 1, 59, 318, DateTimeKind.Utc).AddTicks(5537),
+                            DueDate = new DateTime(2025, 1, 6, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(9091),
+                            MilestoneId = new Guid("2a5b501e-b53c-4027-8351-923cc5cb6875"),
+                            ModifiedAt = new DateTime(2025, 1, 3, 19, 24, 58, 475, DateTimeKind.Utc).AddTicks(9092),
                             Order = 1,
-                            PriorityId = new Guid("9a23b152-0af2-4ab1-95a8-e861ae304881"),
-                            TagId = new Guid("397379a2-677d-4698-99ab-e7c9981f7855"),
+                            PriorityId = new Guid("0a67b914-5e01-4e66-bb59-6d27f95ef957"),
+                            TagId = new Guid("dc7ca0d7-8bb4-4ef3-8a74-5b6e677f9c87"),
                             Title = "Fix Login Bug"
                         });
                 });
@@ -645,7 +645,7 @@ namespace AimHigh.PL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("f6f63289-c9a9-488c-9fd4-264c5ef271b6"),
+                            Id = new Guid("6fc8385a-4782-4cd0-9162-1c14e29880d0"),
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "john.doe@example.com",
                             FirstName = "John",
@@ -654,7 +654,7 @@ namespace AimHigh.PL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f7abeec3-99c6-411d-b4cd-d7ae202abf58"),
+                            Id = new Guid("dd6e3868-2ded-4ef5-b56f-9224f6ebda75"),
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "jane.smith@example.com",
                             FirstName = "Jane",
@@ -725,7 +725,6 @@ namespace AimHigh.PL.Migrations
                     b.HasOne("AimHigh.PL.Entities.tblUser", "User")
                         .WithMany("Projects")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
                         .HasConstraintName("FK_tblProject_tblUser");
 
