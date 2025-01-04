@@ -17,6 +17,8 @@ public class Program
             });
 
 
+
+
         builder.Services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
@@ -42,7 +44,16 @@ public class Program
 
         });
 
-
+        // Add CORS policy
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy("AllowReactApp", policy =>
+            {
+                policy.WithOrigins("https://gerald.icu") // React app URL
+                      .AllowAnyHeader()
+                      .AllowAnyMethod();
+            });
+        });
 
         //Add Connection information
 
@@ -58,15 +69,19 @@ public class Program
 
         app.UseSwagger();
 
-        // Configure the HTTP request pipeline.
-        //if (app.Environment.IsDevelopment())
-        ///{
+        // Configure the HTTP request pipeline
+        if (app.Environment.IsDevelopment())
+        {
+            app.UseSwagger();
             app.UseSwaggerUI();
-       // }
+        }
 
         app.UseHttpsRedirection();
         app.UseRouting();
 
+        // Use CORS
+
+        app.UseCors("AllowReactApp");
         app.UseAuthorization();
 
         // app.MapControllers();
@@ -74,7 +89,6 @@ public class Program
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllers();
-            //endpoints.MapHub<BingoHub>("/bingoHub");
         });
 
         app.Run();
