@@ -19,7 +19,7 @@ namespace AimHigh.BL
                     GoalId = milestone.GoalId,
                     Title = milestone.Title,
                     Description = milestone.Description,
-                    Date = milestone.Date,
+                    DueDate = milestone.DueDate,
                     Status = milestone.Status
 
                 }, rollback);
@@ -48,7 +48,7 @@ namespace AimHigh.BL
                             GoalId = d.GoalId,
                             Title = d.Title,
                             Description = d.Description,
-                            Date = d.Date,
+                            DueDate = d.DueDate,
                             Status = d.Status
                         }));
 
@@ -76,7 +76,7 @@ namespace AimHigh.BL
                         GoalId = row.GoalId,
                         Title = row.Title,
                         Description = row.Description,
-                        Date = row.Date,
+                        DueDate = row.DueDate,
                         Status = row.Status
 
                     };
@@ -106,8 +106,7 @@ namespace AimHigh.BL
                     GoalId = milestone.GoalId,
                     Title = milestone.Title,
                     Description = milestone.Description,
-                    Date = milestone.Date,
-                    Status = milestone.Status
+                    DueDate = milestone.DueDate,
 
                 }, rollback);
                 return results;

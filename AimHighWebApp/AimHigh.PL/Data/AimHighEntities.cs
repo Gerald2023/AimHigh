@@ -208,7 +208,7 @@ namespace AimHigh.PL.Data
                 entity.Property(e => e.Description)
                     .IsRequired()
                     .IsUnicode(false);
-                entity.Property(e => e.Date)
+                entity.Property(e => e.DueDate)
                 .HasColumnType("datetime");
                 entity.Property(e => e.Status)
                     .IsRequired()
@@ -224,7 +224,7 @@ namespace AimHigh.PL.Data
                 GoalId = goalId[0], 
                 Title = "Complete Course 1",
                 Description = "Finish the first online course.",
-                Date = DateTime.Now.AddDays(30), // Set a future date for the milestone
+                DueDate = DateTime.Now.AddDays(30), // Set a future date for the milestone
                 Status = "Pending"
             });
 
@@ -234,7 +234,7 @@ namespace AimHigh.PL.Data
                 GoalId = goalId[1],
                 Title = "Complete Course 2",
                 Description = "Finish the second online course.",
-                Date = DateTime.Now.AddDays(60), // Set a future date for the milestone
+                DueDate = DateTime.Now.AddDays(60), // Set a future date for the milestone
                 Status = "Pending"
             });
         }

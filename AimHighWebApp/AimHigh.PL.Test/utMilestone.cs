@@ -21,7 +21,7 @@ namespace AimHigh.PL.Test
                 GoalId = dc.tblGoals.FirstOrDefault().Id, // This retrieves the Id of an existing user from the tblUsers table
                 Title = "XXXXX",
                 Description = "XXXXX",
-                Date = DateTime.Now,
+                DueDate = DateTime.Now,
                 Status = "Pending"
 
             }); ;
